@@ -1,2 +1,8 @@
-# deb-shubham-webdev
-This is the repository containing all my assignments and project for my Web Development course summer 2017.
+# web-dev-template
+
+1. git clone https://github.com/jannunzi/web-dev-template.git
+1. cd web-dev-template
+1. npm install
+1. mongod
+1. node server.js
+1. browse to localhost:3000
