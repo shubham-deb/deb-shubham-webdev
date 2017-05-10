@@ -1,8 +1,5 @@
 # web-dev-template
-
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+My name is Shubham Deb and I am currently pursuing Masters in Computer Science at Northeastern University.
+I have done internships at CRISIL and Schneider Electric before coming to the US. I was a TA for Algorithms during fall 2016 where I solved students' doubts and conducted quizzes and graded their papers.
+I recently won second prize at NEU Hackathon competition where we built a chatbot that can accept input in the form of Text, Voice or Gestures. 
+This is my repository where it contains all the assignments and project that I have worked when I took the web developemnt course during summer 2017.
