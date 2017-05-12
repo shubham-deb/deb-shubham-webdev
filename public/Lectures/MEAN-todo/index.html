@@ -1,0 +1,53 @@
+<!-- tells the browser that it's a HTML documents -->
+<!DOCTYPE html>
+<!-- ng-app declares an angular application-->
+<html lang="en" ng-app="TodoApp">
+<!-- head contains meta information such as dependencies,author etc about the doc -->
+<head>
+    <link href="../../lib/bootstrap.min.css" rel="stylesheet">
+    <!-- min is used to compress the original file so that it is easy to download and share
+    gives an object angular and declares it
+    -->
+    <script src="../../lib/angular.min.js"></script>
+    <script src="app.js"></script>
+    <meta charset="UTF-8">
+    <title>TODO-list</title>
+</head>
+<!-- body renders the text on the browser -->
+<body>
+<div class="container" ng-controller="TodoController">
+
+    <!-- interprets the hello as an angular variable and prints it out in the browser -->
+    {{todos}}
+
+    <h1>TODO-Form</h1>
+    <label>Title</label>
+    <!-- we want to associate this input to some model so that we can use it to modify the object -->
+    <!-- ties this view to a model so that we can manipulate it in an object oriented way-->
+    <!-- it means that we associate input to an attribute which contains the title, hence the view generates data-->
+    <input ng-model="todo.title" class="form-control">
+    <br>
+    <label>Description</label>
+    <textarea ng-model="todo.note"
+              class="form-control"></textarea>
+    <!-- here we create a list (one of CRUD operations) by initializing ngg-click and that function is in the controller-->
+    <!-- we want to pass an object here to create the object-->
+    <button ng-click="createToDo(todo)"
+            class="btn btn-success btn-block">TODO</button>
+
+    {{todo}}
+
+    <h1>Todo List</h1>
+
+    <div ng-repeat="todo in todos">
+        <!-- keeps track of which dom element's object to be passed when the delete button is clicked-->
+        <a ng-click="deleteTodo(todo)" class="pull-right">
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+        </a>
+        <h3>{{todo.title}}</h3>
+        <p>{{todo.note}}</p>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,3 +1,4 @@
+// import express library and instantiate the object
 var express = require('express');
 var app = express();
 
@@ -10,6 +11,7 @@ app.use(express.static(__dirname + '/public'));
 
 require ("./test/app.js")(app);
 
+// receives either the port that the heroku uses or default port 3000
 var port = process.env.PORT || 3000;
 
 app.listen(port);
