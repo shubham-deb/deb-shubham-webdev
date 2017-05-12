@@ -1,4 +1,13 @@
 (function() {
+
+    var connectionString = 'mongodb://127.0.0.1:27017/test'; // for local
+    if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
+        var username = process.env.MLAB_USERNAME_WEBDEV; // get from environment
+        var password = process.env.MLAB_PASSWORD_WEBDEV;
+        connectionString = 'mongodb://' + username + ':' + password;
+        connectionString += 'mongodb://<dbuser>:<dbpassword>@ds111791.mlab.com:11791/heroku_dpwjbc7x';
+    }
+
     angular
         .module("TestApp", [])
         .controller("TestController", TestController)
