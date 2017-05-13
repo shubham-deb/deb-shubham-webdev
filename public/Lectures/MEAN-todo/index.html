@@ -4,7 +4,9 @@
 <html lang="en" ng-app="TodoApp">
 <!-- head contains meta information such as dependencies,author etc about the doc -->
 <head>
-    <link href="../../lib/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="../../lib/bootstrap-grid.css" rel="stylesheet">-->
+    <!--<link href="../../lib/bootstrap-reboot.css" rel="stylesheet">-->
     <!-- min is used to compress the original file so that it is easy to download and share
     gives an object angular and declares it
     -->
@@ -18,7 +20,7 @@
 <div class="container" ng-controller="TodoController">
 
     <!-- interprets the hello as an angular variable and prints it out in the browser -->
-    {{todos}}
+    <!-- {{todos}} -->
 
     <h1>TODO-Form</h1>
     <label>Title</label>
@@ -33,16 +35,25 @@
     <!-- here we create a list (one of CRUD operations) by initializing ngg-click and that function is in the controller-->
     <!-- we want to pass an object here to create the object-->
     <button ng-click="createToDo(todo)"
-            class="btn btn-success btn-block">TODO</button>
+            class="btn btn-info btn-block">Create todo
+    </button>
 
-    {{todo}}
+    <button ng-click="updateTodo(todo)"
+            class="btn btn-success btn-block">Update todo
+    </button>
+
+    <!--{{todo}} -->
 
     <h1>Todo List</h1>
 
+    <!--<span class="glyphicon glyphicon-thumbs-up">xcvxc</span>-->
     <div ng-repeat="todo in todos">
         <!-- keeps track of which dom element's object to be passed when the delete button is clicked-->
         <a ng-click="deleteTodo(todo)" class="pull-right">
-            <span class="glyphicon glyphicon-thumbs-up"></span>
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+        <a ng-click="selectTodo(todo)" class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
         </a>
         <h3>{{todo.title}}</h3>
         <p>{{todo.note}}</p>
