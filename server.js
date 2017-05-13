@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 require ("./test/app.js")(app);
-require("./todo/app")(app);
+//require("./todo/app")(app);
 
 // receives either the port that the heroku uses or default port 3000
 var port = process.env.PORT || 3000;
