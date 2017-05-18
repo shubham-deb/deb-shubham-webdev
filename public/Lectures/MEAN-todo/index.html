@@ -4,7 +4,8 @@
 <html lang="en" ng-app="TodoApp">
 <!-- head contains meta information such as dependencies,author etc about the doc -->
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="../../lib/dist/css/bootstrap.min.css" rel="stylesheet">
     <!--<link href="../../lib/bootstrap-grid.css" rel="stylesheet">-->
     <!--<link href="../../lib/bootstrap-reboot.css" rel="stylesheet">-->
     <!-- min is used to compress the original file so that it is easy to download and share
@@ -46,14 +47,15 @@
 
     <h1>Todo List</h1>
 
+
+    <a ng-click="deleteTodo(todo)" class="pull-right">
+        <span class="glyphicon glyphicon-remove"></span>
+
     <!--<span class="glyphicon glyphicon-thumbs-up">xcvxc</span>-->
     <div ng-repeat="todo in todos">
         <!-- keeps track of which dom element's object to be passed when the delete button is clicked-->
         <a ng-click="deleteTodo(todo)" class="pull-right">
             <span class="glyphicon glyphicon-remove"></span>
-        </a>
-        <a ng-click="selectTodo(todo)" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
         </a>
         <h3>{{todo.title}}</h3>
         <p>{{todo.note}}</p>

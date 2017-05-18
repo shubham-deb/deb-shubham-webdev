@@ -1,0 +1,52 @@
+<!-- ng-app is a directive which declares that the html document is
+going to implement angular code and it is an angular application.
+But we have to give some features to add dynamic content in it
+Here, ng-app will declare the module that will be instantiated.
+-->
+<html ng-app="myApp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src = "app.js"></script>
+</head>
+
+<body ng-init="hourOfDay=10">
+<!-- When the controller is defined, it refers the ng-app directive to decide which app's method
+ is this. After getting the name of the app, it will instantaite the module-->
+<div ng-controller="MainController">
+    <!-- ng-init is a directive that lets me write initialization code using JavaScript
+    directly into the HTML -->
+    <h1>Hello Angular app</h1>
+
+    <!-- ng-if is a directive which adds a conditional directive
+    declares that the paragraph element will be shown on a given condition
+    -->
+    <p ng-if="hourOfDay<12">Good Morning</p>
+
+    <!-- here ng-bind binds the value of hourofday-->
+    <!--
+    <p>The hour of day is :<span ng-bind="hourOfDay"></span></p> -->
+    <p>The hour of day is :<span ng-bind="hourOfDay"></span></p>
+    <p>The hour of day is {{hourOfDay}}</p>
+    <!-- binding without any element-->
+    {{hourOfDay}}
+    <!-- Here it will overwrite the entire expression-->
+    <p ng-bind="hourOfDay">The hour of day is :</p>
+
+    <!-- Here it goes from the view to the controller,also it is bound to each keypress on the input-->
+    <!-- This is two way data binding
+    MODEL -> VIEW
+    VIEW -> MODEL
+    -->
+    Please enter your name <input ng-model="username" type="text">
+    <!-- Here the scope object is being updated so is the view-->
+    <p>Your name is {{username}}</p>
+
+    <h1>Clock</h1>
+    <!-- Here we got the data from the controller and updated the view. This is one-way binding.-->
+    <p>The current time is {{timeString}}</p>
+    <button ng-click="updateTime()">Update Time</button>
+
+
+</div>
+</body>
+</html>

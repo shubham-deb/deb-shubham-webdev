@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../lib/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../../lib/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+    <link href="../../lib/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid row">
+        <!-- Left NAVIGATION BAR-->
+        <div class="col-xs-4 hidden-xs">
+            <div class="navbar-text pull-right">
+                <a href="#" class="navbar-link">
+                <span class="glyphicon glyphicon-plus">
+                </span>
+                </a>
+            </div>
+            <div class="navbar-text pull-left">
+                <a href="#" class="navbar-link pull-left">
+                <span class="glyphicon glyphicon-menu-left">
+                </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand">
+                    <p class="text-primary">Websites</p>
+                </a>
+            </div>
+        </div>
+        <!-- Right NAVIGATION BAR-->
+        <div class="col-xs-12 col-sm-8">
+                <div class="navbar-text pull-right">
+                    <a href="website-list.html" class="navbar-link">
+                <span class="glyphicon glyphicon-ok">
+                </span>
+                    </a>
+                </div>
+                <div class="navbar-header">
+                    <a class="navbar-brand">
+                        <p class="text-primary">New Website</p>
+                    </a>
+                </div>
+        </div>
+    </div>
+</nav>
+
+<!-- CONTENT OF THE WEBSITE-->
+
+<div class="row container-fluid">
+    <div class="col-xs-4 hidden-xs" style="border-right: 1px solid black;">
+        <ul class="list-group">
+            <li class="list-group-item borderless">
+                Temple Run App
+                <a href="website-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-cog">
+                </span>
+                </a>
+            </li>
+            <li class="list-group-item borderless">
+                Fantasy Football App
+                <a href="website-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-cog">
+                </span>
+                </a>
+            </li>
+            <li class="list-group-item borderless">
+                Food App
+                <a href="website-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-cog">
+                </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+        <div class="container-fluid">
+            <form>
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input id="Name" class="form-control"
+                           type="text" placeholder="eg: My App">
+                    <label for="desc">Description</label>
+                    <textarea id="desc" class="form-control"
+                              placeholder="eg: This app is used to make other websites"
+                              rows="5" style="resize: vertical"></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>
