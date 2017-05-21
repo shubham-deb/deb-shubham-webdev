@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>New Website</title>
     <link href="../../lib/dist/css/bootstrap.css" rel="stylesheet"/>
     <link href="../../lib/dist/css/bootstrap-theme.css" rel="stylesheet"/>
     <link href="../../lib/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
 </head>
-<body>
-<nav class="navbar navbar-default">
+
+
+<body class="pad-top pad-bottom">
+
+<!--TOP NAVBAR-->
+<nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid row">
         <!-- Left NAVIGATION BAR-->
-        <div class="col-xs-4 hidden-xs">
+        <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
+                <a href="website-new.html" class="navbar-link">
                 <span class="glyphicon glyphicon-plus">
                 </span>
                 </a>
             </div>
             <div class="navbar-text pull-left">
-                <a href="#" class="navbar-link pull-left">
+                <a href="website-list.html" class="navbar-link pull-left">
                 <span class="glyphicon glyphicon-menu-left">
                 </span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand">
-                    <p class="text-primary">Websites</p>
+                <div class="navbar-brand">
+                    Websites
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden CHECK-GLYPH which will appear in nav on small screens-->
+        <div class="col-xs-1 hidden-lg hidden-md hidden-sm no-pad-right">
+            <div class="navbar-text">
+                <a href="website-list.html" class="navbar-link">
+                <span class="glyphicon glyphicon-menu-left">
+                </span>
                 </a>
             </div>
         </div>
+
         <!-- Right NAVIGATION BAR-->
-        <div class="col-xs-12 col-sm-8">
+        <div class="col-xs-11 col-sm-8">
                 <div class="navbar-text pull-right">
                     <a href="website-list.html" class="navbar-link">
                 <span class="glyphicon glyphicon-ok">
@@ -41,9 +57,9 @@
                     </a>
                 </div>
                 <div class="navbar-header">
-                    <a class="navbar-brand">
-                        <p class="text-primary">New Website</p>
-                    </a>
+                    <div class="navbar-brand">
+                        New Website
+                    </div>
                 </div>
         </div>
     </div>
@@ -51,25 +67,34 @@
 
 <!-- CONTENT OF THE WEBSITE-->
 
+
 <div class="row container-fluid">
-    <div class="col-xs-4 hidden-xs" style="border-right: 1px solid black;">
+
+    <!--LEFT SIDE OF THE BODY-->
+    <div class="col-xs-4 hidden-xs left-side-column">
         <ul class="list-group">
             <li class="list-group-item borderless">
-                Temple Run App
+                <a href="../pages/page-list.html" class="navbar-link">
+                    Temple Run App
+                </a>
                 <a href="website-edit.html" class="pull-right">
                 <span class="glyphicon glyphicon-cog">
                 </span>
                 </a>
             </li>
             <li class="list-group-item borderless">
-                Fantasy Football App
+                <a href="../pages/page-list.html" class="navbar-link">
+                    Fantasy Football App
+                </a>
                 <a href="website-edit.html" class="pull-right">
                 <span class="glyphicon glyphicon-cog">
                 </span>
                 </a>
             </li>
             <li class="list-group-item borderless">
-                Food App
+                <a href="../pages/page-list.html" class="navbar-link">
+                    Food App
+                </a>
                 <a href="website-edit.html" class="pull-right">
                 <span class="glyphicon glyphicon-cog">
                 </span>
@@ -77,6 +102,8 @@
             </li>
         </ul>
     </div>
+
+    <!--RIGHT SIDE OF THE BODY-->
     <div class="col-xs-12 col-sm-8">
         <div class="container-fluid">
             <form>
@@ -84,10 +111,11 @@
                     <label for="Name">Name</label>
                     <input id="Name" class="form-control"
                            type="text" placeholder="eg: My App">
+
                     <label for="desc">Description</label>
                     <textarea id="desc" class="form-control"
                               placeholder="eg: This app is used to make other websites"
-                              rows="5" style="resize: vertical"></textarea>
+                              rows="5"></textarea>
                 </div>
             </form>
         </div>
@@ -98,7 +126,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#">
+            <a href="../user/profile.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

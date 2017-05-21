@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- HEADER -->
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>profile</title>
     <link href="../../lib/dist/css/bootstrap.css" rel="stylesheet"/>
     <link href="../../lib/dist/css/bootstrap-theme.css" rel="stylesheet"/>
     <link href="../../lib/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
 </head>
-<body id="profileBody">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right" style="clear: both">
-            <a href="#">
+<!-- CONTENT -->
+<body class="pad-top pad-bottom">
+
+    <!--TOP NAVBAR-->
+    <nav class="navbar navbar-fixed-top bg-primary">
+        <div class="container-fluid">
+            <div class="navbar-text move-right">
+                <a href="profile.html" class="navbar-link">
                 <span class="glyphicon glyphicon-ok">
                 </span>
-            </a>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand">
+                    <p>Profile</p>
+                </a>
+            </div>
         </div>
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                Header
-            </a>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-
+    <!--BODY-->
     <div class="container-fluid">
-        <h1>Profile</h1>
-
         <form>
             <div class="form-group">
                 <label for="username">Username</label>
@@ -51,25 +54,21 @@
         </form>
 
         <a class="btn btn-primary btn-block"
-           href="../Website/website-list.html">Websites</a>
-        <a class="btn btn-danger  btn-block"
+           href="../website/website-list.html">Websites</a>
+        <a class="btn btn-danger btn-block"
            href="login.html">Logout</a>
     </div>
 
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right">
-                <a href="#">
+    <!--FOOTER-->
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text move-right">
+                <a href="profile.html">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
+            </div>
         </div>
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                Footer
-            </a>
-        </div>
-    </div>
-</nav>
+    </nav>
 
 </body>
 </html>

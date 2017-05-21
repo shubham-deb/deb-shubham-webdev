@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Website-edit</title>
     <!--<link href="../../lib/dist/css/bootstrap.css" rel="stylesheet"/>-->
     <link href="../../lib/dist/css/bootstrap-theme.css" rel="stylesheet"/>
     <link href="../../lib/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <!--<link href="../css/style.css" rel="stylesheet"/>-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/style.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
 </head>
-<body><!-- style="height:100%"-->
-<nav class="navbar navbar-default">
+
+<!--CONTENT-->
+<body class="pad-bottom pad-top">
+
+<!--NAVBAR-->
+<nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid row">
         <!-- Left NAVIGATION BAR-->
         <div class="col-xs-4 hidden-xs">
             <div class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
+                <a href="website-new.html" class="navbar-link">
                 <span class="glyphicon glyphicon-plus">
                 </span>
                 </a>
             </div>
             <div class="navbar-text pull-left">
-                <a href="#" class="navbar-link pull-left">
+                <a href="website-list.html" class="navbar-link pull-left">
                 <span class="glyphicon glyphicon-menu-left">
                 </span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand">
-                    <p class="text-primary">Websites</p>
+                <div class="navbar-brand">
+                    Websites
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden CHECK-GLYPH which will appear in nav on small screens-->
+        <div class="col-xs-1 hidden-lg hidden-md hidden-sm no-pad-right">
+            <div class="navbar-text">
+                <a href="website-list.html" class="navbar-link">
+                <span class="glyphicon glyphicon-menu-left">
+                </span>
                 </a>
             </div>
         </div>
+
         <!-- Right NAVIGATION BAR-->
-        <div class="col-xs-12 col-sm-8">
+        <div class="col-xs-11 col-sm-8">
             <div class="navbar-text pull-right">
                 <a href="website-list.html" class="navbar-link">
                 <span class="glyphicon glyphicon-ok">
@@ -41,9 +57,9 @@
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand">
-                    <p class="text-primary">Edit Website</p>
-                </a>
+                <div class="navbar-brand">
+                    Edit Website
+                </div>
             </div>
         </div>
     </div>
@@ -52,32 +68,38 @@
 <!-- CONTENT OF THE WEBSITE-->
 
 <div class="row container-fluid">
-    <div class="col-xs-4 hidden-xs left-side-column" style="border-right: 1px solid black;">
+    <div class="col-xs-4 hidden-xs left-side-column">
         <ul class="list-group">
             <li class="list-group-item borderless">
-                Temple Run App
-                <a href="#" class="pull-right">
+                <a href="../pages/page-list.html" class="navbar-link">
+                    Temple Run App
+                </a>
+                <a href="website-edit.html" class="pull-right">
                 <span class="glyphicon glyphicon-cog">
                 </span>
                 </a>
             </li>
             <li class="list-group-item borderless">
-                Fantasy Football App
-                <a href="#" class="pull-right">
+                <a href="../pages/page-list.html" class="navbar-link">
+                    Fantasy Football App
+                </a>
+                <a href="website-edit.html" class="pull-right">
                 <span class="glyphicon glyphicon-cog">
                 </span>
                 </a>
             </li>
             <li class="list-group-item borderless">
-                Food App
-                <a href="#" class="pull-right">
+                <a href="../pages/page-list.html" class="navbar-link">
+                    Food App
+                </a>
+                <a href="website-edit.html" class="pull-right">
                 <span class="glyphicon glyphicon-cog">
                 </span>
                 </a>
             </li>
         </ul>
     </div>
-    <div class="col-xs-12 col-sm-8 right-side-column">
+    <div class="col-xs-12 col-sm-8">
         <div class="container-fluid">
             <form>
                 <div class="form-group">
@@ -86,8 +108,8 @@
                            type="text" value="Food App">
                     <label for="desc">Website Description</label>
                     <textarea id="desc" class="form-control" rows="10"
-                              style="resize: vertical;">t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</textarea>
-                    <button class="form-control btn btn-danger">Delete</button>
+                              style="resize: vertical;">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</textarea>
+                    <a href="website-list.html" class="form-control btn btn-danger">Delete</a>
                 </div>
             </form>
         </div>
@@ -98,7 +120,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#">
+            <a href="../user/profile.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>
