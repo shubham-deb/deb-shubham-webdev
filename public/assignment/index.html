@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="WebAppMaker">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Assignment Home Page</title>
+    <title>HomePage</title>
+    <script src="../lib/dist/js/angular.min.js"></script>
+    <script src="../lib/dist/js/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <!--LOGIN CONTROLLER JS FILES -->
+    <script src="views/user/controllers/login.controller.client.js"></script>
+    <script src="views/user/controllers/profile.controller.client.js"></script>
+    <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+
+    <!--WEBSITE CONTROLLER JS FILES-->
+    <script src="views/website/controllers/website-list.controller.client.js"></script>
+    <script src="views/website/controllers/website-edit.controller.client.js"></script>
+    <script src="views/website/controllers/website-new.controller.client.js"></script>
+    <script src="services/website.service.client.js"></script>
+
+    <!--PAGES CONTROLLER JS FILES-->
+    <script src="views/page/controllers/page-list.controller.client.js"></script>
+    <script src="views/page/controllers/page-new.controller.client.js"></script>
+    <script src="views/page/controllers/page-edit.controller.client.js"></script>
+    <script src="services/page.service.client.js"></script>
+
+    <!--WIDGETS CONTROLLER JS FILES-->
+    <script src="views/widget/controllers/widget-list.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-chooser.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-edit.controller.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
+
+    <link href="../lib/dist/css/bootstrap.css" rel="stylesheet" >
+    <link href="../lib/dist/css/bootstrap-theme.css" rel="stylesheet" >
+    <link href="../lib/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="../lib/dist/css/style.css" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
 </head>
+
 <body>
-    <h1>Assignment Home Page</h1>
+    <div ng-view></div>
 </body>
+
 </html>

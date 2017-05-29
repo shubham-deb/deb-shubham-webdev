@@ -1,0 +1,64 @@
+<!--TOP NAVBAR-->
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text move-right">
+            <a ng-click="model.updateProfile()" class="navbar-link">
+                <span class="glyphicon glyphicon-ok">
+                </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                Profile
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--BODY-->
+<div class="container-fluid">
+    <!--<div class="alert alert-info">{{model.users}}</div>-->
+
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input ng-model="model.username" type="text" class="form-control" id="username" placeholder="eg: Shubham">
+        </div>
+        <div class="form-group">
+            <label for="emailId">Email address</label>
+            <input type="email" class="form-control" ng-model="model.email" id="emailId" placeholder="alice@wonderland.com">
+        </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input ng-model="model.firstName" type="text" class="form-control" id="first-name" placeholder="Alice">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input ng-model="model.lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
+        </div>
+    </form>
+
+    <a class="btn btn-primary btn-block"
+       href="#!/user/{{model.userId}}/website">
+        Websites
+    </a>
+    <a class="btn btn-danger btn-block"
+       href="#!/login">
+        Logout
+    </a>
+    <a class="btn btn-warning btn-block"
+       ng-click="model.deleteProfile()">
+        Delete My Profile
+    </a>
+</div>
+
+<!--FOOTER-->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text move-right">
+            <a href="#!/profile">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

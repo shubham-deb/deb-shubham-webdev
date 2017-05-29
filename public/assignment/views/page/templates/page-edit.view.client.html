@@ -1,0 +1,99 @@
+<!--NAVBAR-->
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="container-fluid row">
+        <!-- Left NAVIGATION BAR-->
+        <div class="col-xs-4 hidden-xs">
+            <div class="navbar-text pull-right">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
+                <span class="glyphicon glyphicon-plus">
+                </span>
+                </a>
+            </div>
+            <div class="navbar-text pull-left">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link pull-left">
+                <span class="glyphicon glyphicon-menu-left">
+                </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    Pages
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden CHECK-GLYPH which will appear in nav on small screens-->
+
+        <!-- Right NAVIGATION BAR-->
+        <div class="col-xs-12 col-sm-8">
+            <div class="hidden-lg hidden-md hidden-sm no-pad-right pull-left">
+                <div class="navbar-text">
+                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
+                <span class="glyphicon glyphicon-menu-left">
+                </span>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-text pull-right">
+                <a ng-click="model.updatePage()" class="navbar-link">
+                <span class="glyphicon glyphicon-ok">
+                </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    Edit Page
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- CONTENT OF THE WEBSITE-->
+
+<div class="row container-fluid">
+
+    <!--Left part of the body-->
+    <div class="col-xs-4 hidden-xs left-side-column">
+        <ul class="list-group">
+            <li ng-repeat="page in model.pages" class="list-group-item borderless">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                {{page.name}}
+                </a>
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
+                    <span class="glyphicon glyphicon-cog">
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--Right part of the body-->
+    <div class="col-xs-12 col-sm-8">
+        <div class="container-fluid">
+            <div ng-show="model.error" class="alert alert-info">{{model.error}}</div>
+            <form>
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input id="Name" class="form-control" ng-model="model.name"
+                           type="text" value="Football Post">
+                    <label for="title">Title</label>
+                    <input id="title" class="form-control" ng-model="model.description"
+                           type="text" value="My Football Page">
+                    <button ng-click="model.delPage()" class="form-control btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#!/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,24 @@
+<!-- CONTENT-->
+
+<div class="container-fluid">
+    <!--MAIN HEADING OF THE CONTENT-->
+    <div ng-show="model.error" class="alert alert-info">{{model.error}}</div>
+    <div ng-model="model.widget" class="wd-widget">
+        <div ng-switch="model.widget.widgetType">
+            <div ng-switch-when="HEADING">
+                <div ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>
+            </div>
+            <div ng-switch-when="IMAGE">
+                <div ng-include="'views/widget/templates/widget-image.view.client.html'"></div>
+            </div>
+            <div ng-switch-when="HTML">
+                <div ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>
+            </div>
+            <div ng-switch-when="YOUTUBE">
+                <div ng-include="'views/widget/templates/widget-youtube.view.client.html'"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>

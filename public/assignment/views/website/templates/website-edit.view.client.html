@@ -1,0 +1,96 @@
+<!--NAVBAR-->
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="container-fluid row">
+        <!-- Left NAVIGATION BAR-->
+        <div class="col-xs-4 hidden-xs">
+            <div class="navbar-text pull-right">
+                <a href="#!/user/{{model.userId}}/website/new" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus">
+                    </span>
+                </a>
+            </div>
+            <div class="navbar-text pull-left">
+                <a href="#!/user/{{model.userId}}/website" class="navbar-link pull-left">
+                    <span class="glyphicon glyphicon-menu-left">
+                    </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    Websites
+                </div>
+            </div>
+        </div>
+
+        <!-- Right NAVIGATION BAR-->
+        <div class="col-xs-11 col-sm-8">
+            <div class=" hidden-lg hidden-md hidden-sm no-pad-right pull-left">
+                <div class="navbar-text">
+                    <a href="#!/user/{{model.userId}}/website" class="navbar-link">
+                <span class="glyphicon glyphicon-menu-left">
+                </span>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-text pull-right">
+                <a ng-click="model.updateWebsite()" class="navbar-link">
+                <span class="glyphicon glyphicon-ok">
+                </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    Edit Website
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- CONTENT OF THE WEBSITE-->
+
+<div class="row container-fluid">
+
+    <div class="col-xs-4 hidden-xs left-side-column">
+        <ul class="list-group">
+            <li ng-repeat="website in model.websites" class="list-group-item borderless">
+                <a href="#!/user/{{model.userId}}/website/{{website._id}}/page" class="navbar-link">
+                    {{website.name}}
+                </a>
+                <a href="#!/user/{{model.userId}}/website/{{website._id}}" class="pull-right">
+                <span class="glyphicon glyphicon-cog">
+                </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-8">
+        <div class="container-fluid">
+            <div ng-show="model.error" class="alert alert-info">{{model.error}}</div>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input id="name" class="form-control"
+                           type="text" ng-model="model.name">
+                    <label for="desc">Description</label>
+                    <textarea id="desc" class="form-control" rows="10" ng-model="model.description"
+                              style="resize: vertical;"></textarea>
+                    <a ng-click="model.deleteWebsite(model.website._id)" class="form-control btn btn-danger">Delete</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#!/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>
