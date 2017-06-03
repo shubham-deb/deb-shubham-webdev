@@ -12,21 +12,34 @@
         model.updatePage = updatePage;
 
         function init() {
-            model.pages = pageService.findPageByWebsiteId(model.websiteId);
-            model.page = pageService.findPageById(model.pageId);
-            model.name  = model.page.name;
-            model.description = model.page.description;
+            pageService
+                .findPageByWebsiteId(model.websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                });
+            pageService
+                .findPageById(model.pageId)
+                .then(function (page) {
+                    model.page = page;
+                    model.name  = model.page.name;
+                    model.description = model.page.description;
+                });
         }
         init();
 
         function delPage() {
-            pageService.deletePage(model.pageId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+            pageService
+                .deletePage(model.pageId)
+                .then(function () {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                });
         }
         
         function updatePage() {
             var page = {
+                _id:model.pageId,
                 name: model.name,
+                websiteId:model.websiteId,
                 description: model.description
             };
             if(typeof page === 'undefined' || page === ""){
@@ -37,8 +50,11 @@
                 model.error = "Name and Description can't be empty";
                 return;
             }
-            pageService.updatePage(model.pageId,page);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+            pageService
+                .updatePage(model.pageId,page)
+                .then(function () {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                });
         }
     }
 })();

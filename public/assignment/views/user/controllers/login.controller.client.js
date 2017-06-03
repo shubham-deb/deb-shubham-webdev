@@ -14,14 +14,15 @@
         model.login = login;
 
         function login(username,password) {
-            var found = userService.findUserByCredentials(username,password);
+            // var found = userService.findUserByCredentials(username,password);
+            userService
+                .findUserByCredentials(username,password)
+                .then(function (user) {
+                    $location.url('/user/' + user._id);
+                },function () {
+                    model.message = "Sorry, username and password not found";
+                });
+    }
 
-            if(found!=null) {
-                $location.url('/user/'+user._id);
-                // model.message = "Welcome " + username;
-            }
-            else
-                model.message = "Sorry, username and password not found";
-        }
     }
 })();

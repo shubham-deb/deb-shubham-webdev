@@ -13,12 +13,16 @@
         model.deleteWidget = deleteWidget;
         
         function init() {
-            model.widget = widgetService.findWidgetById(model.widgetId);
-            model.name = model.widget.name;
-            model.text = model.widget.text;
-            model.size = model.widget.size;
-            model.width = model.widget.width;
-            model.url = model.widget.url;
+            widgetService
+                .findWidgetById(model.widgetId)
+                .then(function (widget) {
+                    model.widget = widget;
+                    model.name = widget.name;
+                    model.text = widget.text;
+                    model.size = widget.size;
+                    model.width = widget.width;
+                    model.url = widget.url;
+                });
 
             // model.widgets = widgetService.getAllWidgets();
         }
@@ -26,6 +30,8 @@
         
         function updateWidget(type) {
             var w ={
+              _id:model.widgetId,
+              pageId:model.pageId,
               name:model.name,
               text:model.text,
               size:model.size,
@@ -38,24 +44,32 @@
                 return;
             }
             if(type === 'HEADING' || type === 'HTML') {
-                if (w.size === "" || w.text === "") {
+                if (model.size === "" || model.text === "" ||
+                    typeof model.size === 'undefined' || typeof model.text === 'undefined') {
                     model.error = "Size and text can't be empty";
                     return;
                 }
             }
             else if(type === 'IMAGE' || type === 'YOUTUBE') {
-                if (w.url === "" || w.width === "") {
+                if (model.url === "" || model.width === "" ||
+                    typeof model.url === 'undefined' || typeof model.width === 'undefined') {
                     model.error = "Url and width can't be empty";
                     return;
                 }
             }
-            var newW = widgetService.updateWidget(model.widgetId,w);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            widgetService
+                .updateWidget(model.widgetId,w)
+                .then(function () {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                });
         }
 
         function deleteWidget() {
-            widgetService.deleteWidget(model.widgetId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            widgetService
+                .deleteWidget(model.widgetId)
+                .then(function () {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                });
         }
     }
 })();

@@ -17,8 +17,10 @@
 
 <!--BODY-->
 <div class="container-fluid">
+    {{model.users}}
     <!--<div class="alert alert-info">{{model.users}}</div>-->
-
+    <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
+    <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
     <form>
         <div class="form-group">
             <label for="username">Username</label>

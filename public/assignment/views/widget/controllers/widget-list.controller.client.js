@@ -2,7 +2,7 @@
     angular
         .module('WebAppMaker')
         .controller('widgetListController',widgetListController);
-
+    
     function widgetListController($location,$routeParams,widgetService,$sce) {
         var model = this;
         model.userId = $routeParams.userId;
@@ -11,8 +11,18 @@
         model.trust = trust;
         model.getEmbedURL = getEmbedURL;
 
+        // $(".widget-list").sortable({
+        //     distance:20,
+        //     cursor: "move",
+        //     axis:"y"
+        // });
+
         function init() {
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
+            widgetService
+                .findWidgetsByPageId(model.pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                });
             //model.widgets = widgets;
         }
         init();

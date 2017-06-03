@@ -10,21 +10,31 @@
         model.createPage = createPage;
 
         function init() {
-            model.pages = pageService.findPageByWebsiteId(model.websiteId);
+            pageService
+                .findPageByWebsiteId(model.websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                });
         }
         init();
 
         function createPage(page) {
-            if(typeof page === 'undefined'){
+            page.websiteId = model.websiteId;
+
+            if(typeof page === 'undefined' || page === ""){
                 model.error = "Cannot create an empty page";
                 return;
             }
-            if(typeof page.name === 'undefined' || typeof page.description === 'undefined'){
+            if(typeof page.name === 'undefined' || typeof page.description === 'undefined'
+                || page.name === "" || page.description === ""){
                 model.error = "Name and Description can't be empty";
                 return;
             }
-            pageService.createPage(model.websiteId,page);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+            pageService
+                .createPage(model.websiteId,page)
+                .then(function () {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                });
         }
     }
 })();

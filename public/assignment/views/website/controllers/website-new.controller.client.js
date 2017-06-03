@@ -9,22 +9,30 @@
         model.createWebsite = createWebsite;
 
         function init() {
-            model.websites = websiteService.findWebsitesByUser(model.userId);
+            websiteService
+                .findWebsitesByUser(model.userId)
+                .then(function (websites) {
+                    model.websites = websites;
+                });
         }
         init();
 
         function createWebsite(website) {
-            if(typeof website === 'undefined'){
+            if(typeof website === 'undefined' || website === ''){
                 model.error = "Cannot create an empty website";
                 return;
             }
-            if(typeof website.name === 'undefined' || typeof website.description === 'undefined'){
+            if(typeof website.name === 'undefined' || typeof website.description === 'undefined'
+                || website.name === '' || website.description === ''){
                 model.error = "Name and Description can't be empty";
                 return;
             }
             website.developerId = model.userId;
-            websiteService.createWebsite(website);
-            $location.url('/user/'+model.userId+ '/website');
+            websiteService
+                .createWebsite(website)
+                .then(function () {
+                    $location.url('/user/'+model.userId+ '/website');
+                });
         }
     }
 })();
