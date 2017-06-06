@@ -13,7 +13,7 @@ var widgets = [
     { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
 ];
 
-app.put("/api/page/:pageId/widget?initial=index1&final=index2",orderWidgets);
+app.put("/page/:pageId/widget",orderWidget);
 app.post ("/api/assignment/uploads", upload.single('myFile'), uploadImage);
 app.post("/api/page/:pageId/widget",createwidget);
 app.put("/api/widget/:widgetId",updatewidget);
@@ -21,26 +21,16 @@ app.get("/api/page/:pageId/widget",findAllWidgetsForPage);
 app.get("/api/widget/:widgetId",findWidgetById);
 app.delete("/api/widget/:widgetId",deletewidget);
 
-function orderWidgets(req,res) {
+function orderWidget(req,res) {
     var oldIndex = parseInt(req.query.initial);
     var newIndex = parseInt(req.query.final);
-    var pageId = req.params.pageId;
 
-    var wids = [];
-    for(var w in widgets){
-        if(widgets[w].pageId === pageId)
-            wids.push(widgets[w]);
-    }
+    var temp = widgets[oldIndex];
+    widgets[oldIndex] = widgets[newIndex];
+    widgets[newIndex] = temp;
+    // console.log(widgets);
 
-    if(wids === [])
-        res.sendStatus(304);
-    else{
-        var temp = wids[oldIndex];
-        wids[oldIndex] = wids[newIndex];
-        wids[newIndex] = temp;
-        console.log(wids);
-        res.sendStatus(200);
-    }
+    res.sendStatus(200);
 }
 
 function uploadImage(req, res) {
@@ -56,14 +46,15 @@ function uploadImage(req, res) {
     }
     var width = req.body.width;
     var myFile = req.file;
-    var pageId = widget.pageId;
-    var userId = widget.userId;
-    var websiteId = widget.websiteId;
+    var userId = req.body.userId;
+    var websiteId = req.body.websiteId;
+    var pageId = req.body.pageId;
 
-    console.log(myFile);
-    if(typeof myFile === 'undefined' || myFile === "") {
-        var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
-        res.redirect(callbackUrl);
+    // console.log(myFile);
+    if(typeof myFile === 'undefined' || myFile === "" || width === "" || typeof width === 'undefined') {
+        res.sendStatus(304);
+        // var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
+        // res.redirect(callbackUrl);
     }
     else {
         var originalname = myFile.originalname; // file name on user's computer
