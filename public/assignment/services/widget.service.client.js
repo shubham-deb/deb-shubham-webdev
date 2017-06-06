@@ -16,6 +16,7 @@
             updateWidget:updateWidget,
             getAllWidgets:getAllWidgets,
             deleteWidget:deleteWidget,
+            orderWidgets:orderWidgets
         };
         // returns the object that could be used by other controllers to modify data.
         return api;
@@ -107,6 +108,13 @@
             // var widget = findWidgetById(widgetId);
             // var index = widgets.indexOf(widget);
             // widgets.splice(index,1);
+        }
+        
+        function orderWidgets(url) {
+            return $http.put(url)
+                .then(function (response) {
+                    return response.data;
+                })
         }
     }
 })();

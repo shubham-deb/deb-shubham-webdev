@@ -17,16 +17,16 @@
         }
         init();
 
-        function createWebsite(website) {
-            if(typeof website === 'undefined' || website === ''){
-                model.error = "Cannot create an empty website";
-                return;
-            }
-            if(typeof website.name === 'undefined' || typeof website.description === 'undefined'
-                || website.name === '' || website.description === ''){
+        function createWebsite() {
+            if(typeof model.name === 'undefined' || typeof  model.description === 'undefined'
+                ||  model.name === '' ||  model.description === ''){
                 model.error = "Name and Description can't be empty";
                 return;
             }
+            var website = {
+                name:model.name,
+                description:model.description
+            };
             website.developerId = model.userId;
             websiteService
                 .createWebsite(website)

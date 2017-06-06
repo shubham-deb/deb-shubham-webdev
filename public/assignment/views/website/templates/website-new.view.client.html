@@ -36,7 +36,7 @@
                 </div>
             </div>
                 <div class="navbar-text pull-right">
-                    <a href="#!/user/{{model.userId}}/website" class="navbar-link">
+                    <a ng-click="model.createWebsite()" class="navbar-link">
                 <span class="glyphicon glyphicon-ok">
                 </span>
                     </a>
@@ -77,14 +77,13 @@
             <form>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input id="name" class="form-control" ng-model="website.name"
+                    <input id="name" class="form-control" ng-model="model.name"
                            type="text" placeholder="eg: My App">
 
                     <label for="desc">Description</label>
-                    <textarea id="desc" class="form-control" ng-model="website.description"
+                    <textarea id="desc" class="form-control" ng-model="model.description"
                               placeholder="eg: This app is used to make other websites"
                               rows="5"></textarea>
-                    <a ng-click="model.createWebsite(website)" class="form-control btn btn-success">Create</a>
                 </div>
             </form>
         </div>

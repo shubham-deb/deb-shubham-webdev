@@ -7,6 +7,7 @@
         var model = this;
         model.searchPhotos = searchPhotos;
         model.selectPhoto = selectPhoto;
+        model.websiteId = $routeParams.websiteId;
         model.widgetId = $routeParams.widgetId;
         model.userId = $routeParams.userId;
         model.pageId = $routeParams.pageId;

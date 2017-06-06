@@ -52,6 +52,12 @@
         }
 
         function updateProfile() {
+            model.error = "";
+            model.message = "";
+            if(model.username === "") {
+                model.error = "You must have a username";
+                return;
+            }
             userService
                     .findUserById(model.userId)
                     .then(function (getUser) {

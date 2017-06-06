@@ -3,9 +3,11 @@
         .module('wbdvDirectives',['WebAppMaker'])
         .directive('wbdvSortable',wbdvSortable);
 
-    function wbdvSortable($http,$routeParams) {
+    function wbdvSortable(widgetService,$routeParams,$location) {
         function linkFunction(scope,element) {
-            var pageId = $routeParams.pageId;
+            var pageId = $routeParams.pageId+"";
+            var userId = $routeParams.userId;
+            var websiteId  = $routeParams.websiteId;
             $(element).sortable({
                 axis:"y",
                 distance:30,
@@ -14,14 +16,15 @@
                     $(this).attr('data-previndex', ui.item.index());
                 },
                 update: function( event, ui ) {
-                    var oldIndex = $(this).attr('data-previndex');
-                    var newindex = ui.item.index();
-                    var url = "/api/page/"+pageId+"/widget?initial="+oldIndex+"&final="+newindex;
-                    $http
-                        .put(url)
+                    var oldIndex = ""+$(this).attr('data-previndex');
+                    var newIndex = ""+ui.item.index();
+                    var url = "/page/"+pageId+"/widget?initial="+oldIndex+"&final="+newIndex;
+                    widgetService
+                        .orderWidgets(url)
                         .then(function (response) {
-                                return response.data;
-                        })
+                            console.log(response);
+                            $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                        });
                 }
             });
 

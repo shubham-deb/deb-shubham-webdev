@@ -17,7 +17,28 @@
 
 <!--BODY-->
 <div class="container-fluid">
-    {{model.users}}
+    <script>
+        $( function() {
+            $( "#dialog" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+
+            $( "#opener" ).on( "click", function() {
+                $( "#dialog" ).dialog( "open" );
+            });
+        } );
+    </script>
+    <div id="dialog" title="Basic dialog">
+        <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+    </div>
     <!--<div class="alert alert-info">{{model.users}}</div>-->
     <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
     <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
@@ -48,10 +69,10 @@
        href="#!/login">
         Logout
     </a>
-    <a class="btn btn-warning btn-block"
+    <button id="opener" class="btn btn-warning btn-block"
        ng-click="model.deleteProfile()">
         Delete My Profile
-    </a>
+    </button>
 </div>
 
 <!--FOOTER-->

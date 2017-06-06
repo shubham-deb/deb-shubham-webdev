@@ -36,7 +36,10 @@
         <input id="width" type="text" class="form-control" ng-model="model.width" />
 
         <label for="upload">Upload Image</label>
-        <form style="padding-bottom: 5px" action="/api/assignment/uploads"   method="post" enctype="multipart/form-data">
+        <form style="padding-bottom: 5px"
+              action="/api/assignment/uploads"
+              method="post"
+              enctype="multipart/form-data">
             <input  id="upload"      name="myFile" type="file" class="form-control"/>
             <input  name="width"     value="{{model.width}}" style="display: none"/>
             <input  name="userId"    value="{{model.userId}}"   style="display: none"/>

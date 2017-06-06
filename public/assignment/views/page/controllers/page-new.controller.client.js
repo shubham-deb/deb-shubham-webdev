@@ -18,18 +18,17 @@
         }
         init();
 
-        function createPage(page) {
-            page.websiteId = model.websiteId;
-
-            if(typeof page === 'undefined' || page === ""){
-                model.error = "Cannot create an empty page";
-                return;
-            }
-            if(typeof page.name === 'undefined' || typeof page.description === 'undefined'
-                || page.name === "" || page.description === ""){
+        function createPage() {
+            if(typeof model.name === 'undefined' || typeof model.description === 'undefined'
+                || model.name === "" || model.description === ""){
                 model.error = "Name and Description can't be empty";
                 return;
             }
+            var page  = {
+                websiteId: model.websiteId,
+                name: model.name,
+                description: model.description
+            };
             pageService
                 .createPage(model.websiteId,page)
                 .then(function () {
