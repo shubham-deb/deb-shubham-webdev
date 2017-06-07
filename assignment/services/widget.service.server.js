@@ -24,10 +24,21 @@ app.delete("/api/widget/:widgetId",deletewidget);
 function orderWidget(req,res) {
     var oldIndex = parseInt(req.query.initial);
     var newIndex = parseInt(req.query.final);
+    var pageId = req.params.pageId;
 
-    var temp = widgets[oldIndex];
-    widgets[oldIndex] = widgets[newIndex];
-    widgets[newIndex] = temp;
+    var results = [];
+    for(var w in widgets){
+        widget = widgets[w];
+        if(widget.pageId === pageId) {
+            results.push(widget);
+            delete widgets[w];
+        }
+    }
+
+    var temp = results[oldIndex];
+    results[oldIndex] = results[newIndex];
+    results[newIndex] = temp;
+    widgets.splice.apply(widgets,[0,0].concat(results));
     // console.log(widgets);
 
     res.sendStatus(200);

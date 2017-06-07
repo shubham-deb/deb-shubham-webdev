@@ -36,9 +36,6 @@
             });
         } );
     </script>
-    <div id="dialog" title="Basic dialog">
-        <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-    </div>
     <!--<div class="alert alert-info">{{model.users}}</div>-->
     <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
     <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
@@ -79,7 +76,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text move-right">
-            <a href="#!/profile">
+            <a href="#!/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

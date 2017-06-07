@@ -1,8 +1,8 @@
 <!-- CONTENT-->
 
 <div class="container-fluid">
-    <!--MAIN HEADING OF THE CONTENT-->
     <div ng-show="model.error" class="alert alert-info">{{model.error}}</div>
+    <!--MAIN HEADING OF THE CONTENT-->
     <div ng-model="model.widget" class="wd-widget">
         <div ng-switch="model.widget.widgetType">
             <div ng-switch-when="HEADING">

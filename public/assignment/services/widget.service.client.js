@@ -111,6 +111,7 @@
         }
         
         function orderWidgets(url) {
+
             return $http.put(url)
                 .then(function (response) {
                     return response.data;
