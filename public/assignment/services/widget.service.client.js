@@ -64,8 +64,8 @@
             // return widget;
         }
 
-        function updateWidget(widgetId,widget) {
-            var url = "/api/widget/"+widgetId;
+        function updateWidget(pageId,widgetId,widget) {
+            var url = "/api/page/"+pageId+"/widget/"+widgetId;
             return $http
                 .put(url,widget)
                 .then(function (response) {
@@ -98,8 +98,8 @@
         function getAllWidgets() {
             return widgets;
         }
-        function deleteWidget(widgetId) {
-            var url = "/api/widget/"+widgetId;
+        function deleteWidget(pageId,widgetId) {
+            var url = "/api/page/"+pageId+"/widget/"+widgetId;
             return $http
                 .delete(url)
                 .then(function (response) {
@@ -111,10 +111,11 @@
         }
         
         function orderWidgets(url) {
-
             return $http.put(url)
                 .then(function (response) {
-                    return response.data;
+                    return response;
+                },function (err) {
+                    console.log(err);
                 })
         }
     }

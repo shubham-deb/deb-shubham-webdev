@@ -22,6 +22,9 @@
                     model.size = widget.size;
                     model.width = widget.width;
                     model.url = widget.url;
+                    model.rows = widget.rows;
+                    model.formatted = widget.formatted;
+                    model.placeholder = widget.placeholder;
                 });
 
             // model.widgets = widgetService.getAllWidgets();
@@ -30,23 +33,38 @@
         
         function updateWidget(type) {
             var w ={
-              _id:model.widgetId,
               pageId:model.pageId,
               name:model.name,
               text:model.text,
               size:model.size,
               width:model.width,
               url:model.url,
-              widgetType: type
+              type: type,
+              rows:model.rows,
+              formatted:model.formatted,
+              placeholder:model.placeholder
             };
             if(typeof w === 'undefined' || w === ""){
                 model.error = "Cannot create an empty widget";
                 return;
             }
-            if(type === 'HEADING' || type === 'HTML') {
+            if(type === 'HEADING') {
                 if (model.size === "" || model.text === "" ||
                     typeof model.size === 'undefined' || typeof model.text === 'undefined') {
                     model.error = "Size and text can't be empty";
+                    return;
+                }
+            }
+            else if(type === 'HTML'){
+                if (model.name === "" || model.text === "" ||
+                    typeof model.name === 'undefined' || typeof model.text === 'undefined') {
+                    model.error = "Name and text can't be empty";
+                    return;
+                }
+            }
+            else if(type === 'TEXT'){
+                if (model.rows === "" || typeof model.rows === 'undefined') {
+                    model.error = "Rows can't be empty";
                     return;
                 }
             }
@@ -58,7 +76,7 @@
                 }
             }
             widgetService
-                .updateWidget(model.widgetId,w)
+                .updateWidget(model.pageId,model.widgetId,w)
                 .then(function () {
                     $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
@@ -66,8 +84,9 @@
 
         function deleteWidget() {
             widgetService
-                .deleteWidget(model.widgetId)
-                .then(function () {
+                .deleteWidget(model.pageId,model.widgetId)
+                .then(function (status) {
+                    // console.log(status);
                     $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
         }

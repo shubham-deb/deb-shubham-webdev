@@ -49,8 +49,8 @@
             // });
         }
 
-        function deletePage(pageId) {
-            var url="/api/page/"+pageId;
+        function deletePage(userId,websiteId,pageId) {
+            var url="/api/assignment/user/"+userId+"/website/"+websiteId+"/page/"+pageId;
             return $http
                 .delete(url)
                 . then(function (response) {

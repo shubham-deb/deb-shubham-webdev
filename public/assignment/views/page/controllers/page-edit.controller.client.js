@@ -29,7 +29,7 @@
 
         function delPage() {
             pageService
-                .deletePage(model.pageId)
+                .deletePage(model.userId,model.websiteId,model.pageId)
                 .then(function () {
                     $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
                 });

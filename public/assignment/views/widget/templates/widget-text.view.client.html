@@ -1,0 +1,43 @@
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a ng-click="model.updateWidget('TEXT')" class="navbar-link">
+                <span class="glyphicon glyphicon-ok">
+                </span>
+            </a>
+        </div>
+        <div class="navbar-text pull-left">
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                <span class="glyphicon glyphicon-arrow-left">
+                </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                Widget Edit
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container-fluid">
+    <form class="pad-left">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="eg: Shubham" class="form-control" ng-model="model.name">
+
+        <label for="text">Text</label>
+        <input id="text" ng-model="model.text" class="form-control"/>
+
+        <label for="rows">Rows</label>
+        <input id="rows" ng-model="model.rows" min="0" max="5" class="form-control" type="number"/>
+
+        <label for="placeholder">PlaceHolder</label>
+        <input id="placeholder" ng-model="model.placeholder" class="form-control"/>
+
+        <label for="formatted">Formatted</label>
+        <input id="formatted" ng-model="model.formatted" type="checkbox"/>
+
+        <a ng-click="model.deleteWidget()" class="form-control btn btn-danger">Delete</a>
+    </form>
+</div>

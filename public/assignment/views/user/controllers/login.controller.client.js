@@ -18,7 +18,10 @@
             userService
                 .findUserByCredentials(username,password)
                 .then(function (user) {
-                    $location.url('/user/' + user._id);
+                    if(user!="")
+                        $location.url('/user/' + user._id);
+                    else
+                        model.message = "Sorry, username and password not found";;
                 },function () {
                     model.message = "Sorry, username and password not found";
                 });

@@ -29,7 +29,6 @@
                 })
         }
 
-
         function findUserByCredentials(username,password) {
             var url = "/api/assignment/user?username="+username+"&password="+password;
             return $http.get(url)
@@ -42,6 +41,7 @@
             var url = "/api/assignment/user?username="+username;
             return $http.get(url)
                 .then(function (response) {
+                    var user = response.data;
                     return response.data;
                 });
         }
@@ -50,7 +50,10 @@
             var url = "/api/assignment/user/"+userId;
             return $http.delete(url)
                 .then(function (response) {
+                    // console.log(response);
                     return response.data;
+                },function (err) {
+                    console.log(err);
                 })
             // var user = findUserById(userId);
             // var index = users.indexOf(user);

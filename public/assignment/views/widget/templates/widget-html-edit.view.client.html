@@ -1,0 +1,39 @@
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a ng-click="model.updateWidget('HTML')" class="navbar-link">
+                <span class="glyphicon glyphicon-ok">
+                </span>
+            </a>
+        </div>
+        <div class="navbar-text pull-left">
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                <span class="glyphicon glyphicon-arrow-left">
+                </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                Widget Edit
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container-fluid">
+    <form class="pad-left">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="eg: Shubham" class="form-control" ng-model="model.name">
+        <label for="html">HTML</label>
+        <div ng-model="model.text"
+             id="html"
+             text-angular
+             ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+        </div>
+
+        <a ng-click="model.deleteWidget()" class="form-control btn btn-danger">Delete</a>
+    </form>
+</div>

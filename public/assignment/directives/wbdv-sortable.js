@@ -5,7 +5,7 @@
 
     function wbdvSortable(widgetService,$routeParams,$location) {
         function linkFunction(scope,element) {
-            var pageId = $routeParams.pageId;
+            var pageId = $routeParams.pageId+"";
             var userId = $routeParams.userId;
             var websiteId  = $routeParams.websiteId;
             $(element).sortable({

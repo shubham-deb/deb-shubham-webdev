@@ -1,18 +1,11 @@
 var app = require('../../express');
-
-var users =
-    [
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    ];
+var userModel = require('../../public/assignment/models/user/user.model.server');
 
 
 app.delete('/api/assignment/user/:userId',deleteUser);
 app.put('/api/assignment/user/:userId',updateUser);
 // Reading data from the client and validating
-app.get('/api/assignment/user/:userId',findUserById);
+app.get('/api/assignment/user/:userId',findUserByUserId);
 app.get('/api/assignment/user',findAllUsers);
 // Updates the data that is currently residing in the server and sent from the client
 app.post('/api/assignment/user',createUser);
@@ -20,76 +13,80 @@ app.post('/api/assignment/user',createUser);
 // to update or create an new data which is not residing in the server, we use put
 // Reading data from the client and validating
 
-function findUserById(req,res) {
+function findUserByUserId(req,res) {
     var userId = req.params.userId;
-    for(var u in users){
-        user = users[u];
-        if(user._id === userId) {
-            res.json(user);
-            return;
-        }
-    }
-    res.sendStatus(404);
+    userModel
+        .findUserById(userId)
+        .then(function (user) {
+            res.send(user);
+        },function (err) {
+            // console.log(err);
+        })
 }
 
 function findAllUsers(req,res) {
     var username = req.query.username;
     var password = req.query.password;
     if(username && password){
-        for(var u in users){
-            user = users[u];
-            if(user.username === username &&
-                user.password === password) {
-                res.json(user);
-                return;
-            }
-        }
-        res.sendStatus(404);
-        return;
+        userModel
+            .findAllUserByCredentials(username,password)
+            .then(function (user) {
+                res.send(user);
+            },function (err) {
+                res.sendStatus(400);
+            })
     }
     else if(username) {
-        for(var u in users){
-            user = users[u];
-            if(user.username === username) {
-                res.json(user);
-                return;
-            }
-        }
-        res.sendStatus(404);
-        return;
+        userModel
+            .findAllUserByUsername(username)
+            .then(function (user) {
+                if(user)
+                    res.json(user);
+                else
+                    res.sendStatus(404);
+            });
     }
     else
     {
-        res.json(users);
+        userModel
+            .findAllUsers()
+            .then(function (users) {
+                res.send(users);
+            });
+        res.sendStatus(200);
     }
 }
 
 function createUser(req,res) {
     var user = req.body;
-    user._id = (new Date()).getTime()+"";
-    users.push(user);
-    res.json(user);
+    userModel
+        .createUser(user)
+        .then(function (user) {
+            res.send(user);
+            res.sendStatus(200);
+        },function (err) {
+            res.sendStatus(404);
+        });
 }
 
 function updateUser(req,res) {
     var updateUser = req.body;
-    for(var u in users){
-        if(users[u]._id === req.params.userId) {
-            users[u]=updateUser;
-            res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
+    var userId  = req.params.userId;
+    userModel
+        .updateUser(userId,updateUser)
+        .then(function (user) {
+            res.send(user);
+        });
 }
 
 function deleteUser(req,res) {
-    for(var u in users){
-        if(users[u]._id === req.params.userId) {
-            users.splice(u,1);
+    console.log("in service server file");
+    var userId  = req.params.userId;
+    userModel
+        .deleteUser(userId)
+        .then(function (status) {
             res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
+        },function (err) {
+            res.sendStatus(err);
+        });
 }
