@@ -16,6 +16,7 @@ if(process.env.MLAB_USERNAME) {
         process.env.MLAB_PORT + '/' +
         process.env.MLAB_APP_NAME;
 }
+
 mongoose.connect(connectionString);
 
 require('./services/user.service.server');
