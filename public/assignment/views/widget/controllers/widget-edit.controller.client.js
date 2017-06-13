@@ -11,7 +11,7 @@
         model.widgetId = $routeParams.widgetId;
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
-        
+
         function init() {
             widgetService
                 .findWidgetById(model.widgetId)

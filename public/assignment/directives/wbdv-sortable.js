@@ -19,12 +19,11 @@
                     var oldIndex = ""+$(this).attr('data-previndex');
                     var newIndex = ""+ui.item.index();
                     var url = "/page/"+pageId+"/widget?initial="+oldIndex+"&final="+newIndex;
-                    widgetService
-                        .orderWidgets(url)
-                        .then(function (response) {
-                            console.log(response);
-                            $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
-                        });
+                    widgetService.updateWidgetPosition(pageId,oldIndex,newIndex);
+                        // .then(function (response) {
+                        //     console.log(response);
+                        //     $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                        // });
                 }
             });
 

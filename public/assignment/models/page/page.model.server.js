@@ -49,12 +49,12 @@ module.exports = pageModel;
 // }
 
 
-function addWidget(pageId, widget) {
+function addWidget(pageId, widgetId) {
     return pageModel
         .findById(pageId)
         .then(function (page) {
             // console.log(widget);
-            page.widgets.push(widget);
+            page.widgets.push(widgetId);
             return page.save();
         });
 }

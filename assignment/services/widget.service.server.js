@@ -16,19 +16,13 @@ function orderWidget(req,res) {
     var newIndex = parseInt(req.query.final);
     var pageId = req.params.pageId;
 
-    // var results = [];
-    // for(var w in widgets){
-    //     widget = widgets[w];
-    //     if(widget.pageId === pageId) {
-    //         results.push(widget);
-    //         delete widgets[w];
-    //     }
-    // }
 
-    widgetModel
+    return widgetModel
         .reorderWidget(pageId,oldIndex,newIndex)
-        .then(function (status) {
-            res.send(status);
+        .then(function (widgets) {
+            res.json(widgets);
+        },function (err) {
+            console.log(err);
         });
 
     // var temp = results[oldIndex];
@@ -105,9 +99,9 @@ function findWidgetById(req,res) {
 
 function createwidget(req,res) {
     var widget = req.body;
-    widget._page = req.params.pageId;
+    var pageid = req.params.pageId;
     widgetModel
-        .createWidget(widget)
+        .createWidget(pageid,widget)
         .then(function (widget) {
             res.json(widget);
         },function (err) {
@@ -118,9 +112,8 @@ function createwidget(req,res) {
 function updatewidget(req,res) {
     var widget = req.body;
     var widgetId = req.params.widgetId;
-    var pageId = req.params.pageId;
     widgetModel
-        .updateWidget(pageId,widgetId,widget)
+        .updateWidget(widgetId,widget)
         .then(function (widget) {
             res.send(widget);
         },function (err) {

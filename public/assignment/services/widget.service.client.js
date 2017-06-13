@@ -16,7 +16,7 @@
             updateWidget:updateWidget,
             getAllWidgets:getAllWidgets,
             deleteWidget:deleteWidget,
-            orderWidgets:orderWidgets
+            updateWidgetPosition:updateWidgetPosition
         };
         // returns the object that could be used by other controllers to modify data.
         return api;
@@ -110,13 +110,14 @@
             // widgets.splice(index,1);
         }
         
-        function orderWidgets(url) {
-            return $http.put(url)
-                .then(function (response) {
-                    return response;
-                },function (err) {
-                    console.log(err);
-                })
+        function updateWidgetPosition(pageId,oldIndex,newIndex) {
+            var url = "/page/"+pageId+"/widget?initial="+oldIndex+"&final="+newIndex;
+            $http.put(url);
+                // .then(function (response) {
+                //     // return response;
+                // },function (err) {
+                //     console.log(err);
+                // })
         }
     }
 })();
