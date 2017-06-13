@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('q').Promise;
 
-// var connectionString = 'mongodb://localhost/myDb';\
-var connectionString = 'mongodb://shubhamdeb:shubhamdeb_123@ds111791.mlab.com:11791/heroku_dpwjbc7x'; // user yours
+var connectionString = 'mongodb://localhost/myDb';
+// var connectionString = 'mongodb://shubhamdeb:shubhamdeb_123@ds111791.mlab.com:11791/heroku_dpwjbc7x'; // user yours
 mongoose.connect(connectionString);
 
 require('./services/user.service.server');

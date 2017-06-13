@@ -25,19 +25,15 @@
         }
         
         function selectPhoto(photo) {
-            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
-            url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
-            widget =  {'_id': model.widgetId,
-                'name': '',
-                'text': '',
-                'url': url,
-                'widgetType': 'IMAGE',
-                'pageId': model.pageId,
-                'width': ''};
             widgetService
-                .updateWidget(model.widgetId, widget)
-                .then(function (){
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + model.widgetId);
+                .findWidgetById(model.widgetId)
+                .then(function (widget) {
+                    widget.url = "https://farm"+photo.farm+".staticflickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_s.jpg";
+                    widgetService
+                        .updateWidget(model.pageId,model.widgetId,widget)
+                        .then(function () {
+                            $location.url('/user/'+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget");
+                        });
                 });
         }
 
