@@ -7,19 +7,23 @@
         .module("WebAppMaker")
         .controller('profileController',profileController);
 
-    function profileController($location,$routeParams,userService) {
+    function profileController(currentUser,$location,$routeParams,userService) {
         // refers to the instance of the called controller
         var model = this;
-        model.userId = $routeParams.userId;
+        // model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
+        model.user = currentUser;
         model.deleteProfile = deleteProfile;
         model.updateProfile = updateProfile;
+        model.logout = logout;
 
         function init() {
-            userService
-                .findUserById(model.userId)
-                // This is a promise or callback function which is executed once it gets a successful message from
-                // the server.
-                .then(renderUser, userError);
+            // userService
+            //     .findUserById(model.userId)
+            //     // This is a promise or callback function which is executed once it gets a successful message from
+            //     // the server.
+            //     .then(renderUser, userError);
+            renderUser(currentUser);
             userService
                 .findUsers()
                 .then(function (users) {
@@ -27,6 +31,14 @@
                 });
         }
         init();
+
+        function logout() {
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
+                })
+        }
 
         function renderUser(user) {
             model.user = user;

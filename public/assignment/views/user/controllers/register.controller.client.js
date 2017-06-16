@@ -30,11 +30,13 @@
                         username: username,
                         password: password
                     };
+                    // return userService
+                    //     .createUser(newUser)
                     return userService
-                        .createUser(newUser)
+                        .registerUser(newUser);
                 })
                 .then(function (user) {
-                    $location.url('/user/'+ user._id);
+                    $location.url('/profile');
                 });
         }
     }

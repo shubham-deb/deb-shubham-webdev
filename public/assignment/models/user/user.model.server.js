@@ -11,6 +11,8 @@ userModel.findAllUserByUsername = findAllUserByUsername;
 userModel.findAllUserByCredentials = findAllUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
+userModel.findUserByGoogleId = findUserByGoogleId;
+userModel.findUserByFacebookId = findUserByFacebookId;
 
 module.exports = userModel;
 
@@ -63,4 +65,12 @@ function updateUser(userId,newUser) {
 function deleteUser(userId) {
     // console.log("in model server file");
     return userModel.remove({_id:userId});
+}
+
+function findUserByGoogleId(googleId) {
+    return userModel.findOne({'google.id':googleId});
+}
+
+function findUserByFacebookId(facebookId) {
+    return userModel.findOne({'facebook.id': facebookId});
 }

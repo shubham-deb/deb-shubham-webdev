@@ -12,13 +12,46 @@
             findUserById : findUserById,
             findUserByCredentials : findUserByCredentials,
             findUserByUsername : findUserByUsername,
+            login:login,
             deleteUser : deleteUser,
             createUser : createUser,
             findUsers: findUsers,
-            updateUser: updateUser
+            updateUser: updateUser,
+            checkLoggedIn:checkLoggedIn,
+            logout:logout,
+            registerUser:registerUser
         };
         // returns the object that could be used by other controllers to modify data.
         return api;
+
+        function registerUser(user) {
+            var url = "/api/register";
+            return $http.post(url,user)
+                .then(function (response) {
+                    return response.data;
+                })
+
+        }
+        
+        function logout() {
+            var url = "/api/logout";
+            return $http.post(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+        
+        function login(username,password) {
+            var url = "/api/login";
+            var credentials = {
+                username:username,
+                password:password
+            };
+            return $http.post(url, credentials)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
         function findUserById(userId) {
             var url = "/api/assignment/user/"+userId;
@@ -91,6 +124,14 @@
                 .then(function (response){
                     return response.data;
                 })
+        }
+        
+        function checkLoggedIn() {
+            var url = "/api/checkLoggedIn";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
     }
 })();

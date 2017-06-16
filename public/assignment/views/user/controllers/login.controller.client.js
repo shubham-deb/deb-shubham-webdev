@@ -16,10 +16,10 @@
         function login(username,password) {
             // var found = userService.findUserByCredentials(username,password);
             userService
-                .findUserByCredentials(username,password)
+                .login(username,password)
                 .then(function (user) {
-                    if(user!="")
-                        $location.url('/user/' + user._id);
+                    if(user!="" || user!=null)
+                        $location.url('/profile');
                     else
                         model.message = "Sorry, username and password not found";;
                 },function () {

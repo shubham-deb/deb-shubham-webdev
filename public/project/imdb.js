@@ -44,7 +44,6 @@
                     // console.log(movie);
                     var title = movie.title;
                     var poster = poster_path+movie.poster_path;
-                    // console.log(poster);
                     var plot = movie.overview;
 
                     var tr = $("<tr>");

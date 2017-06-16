@@ -59,11 +59,11 @@
     </form>
 
     <a class="btn btn-primary btn-block"
-       href="#!/user/{{model.userId}}/website">
+       href="#!/user/website">
         Websites
     </a>
     <a class="btn btn-danger btn-block"
-       href="#!/login">
+           ng-click="model.logout()">
         Logout
     </a>
     <button id="opener" class="btn btn-warning btn-block"
