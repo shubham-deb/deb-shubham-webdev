@@ -45,9 +45,9 @@ var googleConfig = {
     callbackURL  : process.env.GOOGLE_CALLBACK_URL
 };
 var facebookConfig = {
-    clientID     : process.env.FACEBOOK_CLIENT_ID ,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
+    clientID     : "665808330270923" ,
+    clientSecret : "72e547c881e2bdcbc2de1bee7556a255",
+    callbackURL  : "http://localhost:3000/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'email']
 };
 
