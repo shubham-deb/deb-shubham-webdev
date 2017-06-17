@@ -1,6 +1,6 @@
 var app = require('../../express');
 var bcrypt = require("bcrypt-nodejs");
-var env = require('./env');
+//var env = require('./env');
 var userModel = require('../../public/assignment/models/user/user.model.server');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
