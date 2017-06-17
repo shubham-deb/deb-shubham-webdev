@@ -3,9 +3,9 @@
         .module('WebAppMaker')
         .controller('pageEditController',pageEditController);
 
-    function pageEditController($location,$routeParams,pageService) {
+    function pageEditController(currentUser,$location,$routeParams,pageService) {
         var model = this;
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
         model.delPage = delPage;
@@ -31,7 +31,7 @@
             pageService
                 .deletePage(model.userId,model.websiteId,model.pageId)
                 .then(function () {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                    $location.url('/website/'+model.websiteId+'/page');
                 });
         }
         
@@ -42,18 +42,26 @@
                 websiteId:model.websiteId,
                 description: model.description
             };
-            if(typeof page === 'undefined' || page === ""){
-                model.error = "Cannot create an empty page";
+            // if(typeof page === 'undefined' || page === ""){
+            //     model.error = "Cannot create an empty page";
+            //     return;
+            // }
+            // if(page.name === "" || page.description === ""){
+            //     model.error = "Name and Description can't be empty";
+            //     return;
+            // }
+            if(model.pagename === undefined){
+                model.pagename = "Name is required";
+                model.error = true;
                 return;
             }
-            if(page.name === "" || page.description === ""){
-                model.error = "Name and Description can't be empty";
-                return;
-            }
+            model.pagename = false;
+            model.error = false;
+
             pageService
                 .updatePage(model.pageId,page)
                 .then(function () {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                    $location.url('/website/'+model.websiteId+'/page');
                 });
         }
     }

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var userSchema = require('./user.schema.server');
+var bcrypt = require("bcrypt-nodejs");
 var userModel = mongoose.model('UserModel',userSchema);
 
 userModel.deleteWebsite = deleteWebsite;
@@ -36,6 +37,7 @@ function addWebsite(userId, websiteId) {
 }
 
 function createUser(user) {
+    user.password = bcrypt.hashSync(user.password);
     return userModel.create(user);
 }
 

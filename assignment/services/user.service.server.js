@@ -1,8 +1,11 @@
 var app = require('../../express');
+var bcrypt = require("bcrypt-nodejs");
+var env = require('./env');
 var userModel = require('../../public/assignment/models/user/user.model.server');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
@@ -24,19 +27,70 @@ app.post('/api/assignment/user',createUser);
 
 app.post('/api/login',passport.authenticate('local'),login);
 app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
-app.get('/auth/google/callback',
+app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect: '/assignment/#!/profile',
+        failureRedirect: '/assignment/#!/login'
+    }));
+app.get('/google/callback',
     passport.authenticate('google', {
-        successRedirect: '#!/profile',
-        failureRedirect: '#!/login'
+        successRedirect: '/assignment/#!/profile',
+        failureRedirect: '/assignment/#!/login'
     }));
 
 var googleConfig = {
-    clientID     : "425690137519-i673af18uhsegbctbgacv8t3k99fmeo0.apps.googleusercontent.com",
-    clientSecret : "GRPvdK7XvBKIZYFt8a-42weu",
-    callbackURL  : "http://localhost:3000/auth/google/callback"
+    clientID     :  process.env.GOOGLE_CLIENT_ID,
+    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL  : process.env.GOOGLE_CALLBACK_URL
+};
+var facebookConfig = {
+    clientID     : process.env.FACEBOOK_CLIENT_ID ,
+    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
+    profileFields: ['id', 'displayName', 'email']
 };
 
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+
+function facebookStrategy(token, refreshToken, profile, done) {
+    userModel
+        .findUserByFacebookId(profile.id)
+        .then(
+            function(user) {
+                if(user) {
+                    return done(null, user);
+                } else {
+                    console.log(profile);
+                    var email = profile.emails[0].value;
+                    var emailParts = email.split("@");
+                    var newFacebookUser = {
+                        username:  emailParts[0],
+                        firstName: profile.name[0],
+                        lastName:  profile.name[1],
+                        email:     email,
+                        facebook: {
+                            id:    profile.id,
+                            token: token
+                        }
+                    };
+                    return userModel.createUser(newFacebookUser);
+                }
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        )
+        .then(
+            function(user){
+                return done(null, user);
+            },
+            function(err){
+                if (err) { return done(err); }
+            }
+        );
+}
 
 function googleStrategy(token, refreshToken, profile, done) {
         userModel
@@ -125,14 +179,14 @@ function deserializeUser(user, done) {
 // So if the user exists it will return the user otherwise it will not
 function localStrategy(username, password, done) {
     userModel
-        .findAllUserByCredentials(username,password)
+        .findAllUserByUsername(username)
         .then(
             function(user) {
-                if (!user) {
-                    // if error then return null, else return false implying that the user is not an object
+                if(user && bcrypt.compareSync(password, user.password)) {
+                    return done(null, user);
+                } else {
                     return done(null, false);
                 }
-                return done(null, user);
             },
             function(err) {
                 if (err) { return done(err); }
@@ -160,9 +214,13 @@ function findAllUsers(req,res) {
     var password = req.query.password;
     if(username && password){
         userModel
-            .findAllUserByCredentials(username,password)
+            .findAllUserByUsername(username)
             .then(function (user) {
-                res.send(user);
+                if(user && bcrypt.compareSync(password, user.password)) {
+                    return user;
+                } else {
+                    return null;
+                }
             },function (err) {
                 res.sendStatus(400);
             })

@@ -3,9 +3,9 @@
         .module('WebAppMaker')
         .controller('widgetEditController',widgetEditController);
 
-    function widgetEditController($location,$routeParams,widgetService) {
+    function widgetEditController(currentUser,$location,$routeParams,widgetService) {
         var model = this;
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
         model.widgetId = $routeParams.widgetId;
@@ -44,41 +44,106 @@
               formatted:model.formatted,
               placeholder:model.placeholder
             };
-            if(typeof w === 'undefined' || w === ""){
-                model.error = "Cannot create an empty widget";
+            if(typeof w === 'undefined' || w === undefined){
+                model.error = true;
                 return;
             }
             if(type === 'HEADING') {
-                if (model.size === "" || model.text === "" ||
-                    typeof model.size === 'undefined' || typeof model.text === 'undefined') {
-                    model.error = "Size and text can't be empty";
+                if (model.size === undefined || model.text === undefined || model.name === undefined) {
+                    if (model.name === undefined) {
+                        model.widgetename = "name is required";
+                        model.error = true;
+                    }
+                    else{
+                        model.widgetename = false;
+                    }
+                    if ( model.text === undefined) {
+                        model.widgettext = "Password is required";
+                        model.error = true;
+                    }
+                    else{
+                        model.widgettext = false;
+                    }
+                    if (model.size === undefined) {
+                        model.widgetsize = "Password is required";
+                        model.error = true;
+                    }
+                    else{
+                        model.widgetsize = false;
+                    }
                     return;
                 }
+                model.widgetename = false;
+                model.widgetsize = false;
+                model.widgettext = false;
             }
             else if(type === 'HTML'){
-                if (model.name === "" || model.text === "" ||
-                    typeof model.name === 'undefined' || typeof model.text === 'undefined') {
-                    model.error = "Name and text can't be empty";
+                if (model.name === undefined) {
+                    model.widgetename = "name is required";
+                    model.error = true;
                     return;
                 }
+                model.widgetename = false;
             }
             else if(type === 'TEXT'){
-                if (model.rows === "" || typeof model.rows === 'undefined') {
-                    model.error = "Rows can't be empty";
+                if (model.rows === undefined || model.name === undefined) {
+                    if (model.name === undefined) {
+                        model.widgetename = "name is required";
+                        model.error = true;
+                        return;
+                    }
+                    else {
+                        model.widgetename = false;
+                    }
+                    if (model.rows === undefined) {
+                        model.rows = "rows is required";
+                        model.error = true;
+                        return;
+                    }
+                    else {
+                        model.rows = false;
+                    }
                     return;
                 }
+                model.widgetename = false;
+                model.error = true;
             }
             else if(type === 'IMAGE' || type === 'YOUTUBE') {
-                if (model.url === "" || model.width === "" ||
-                    typeof model.url === 'undefined' || typeof model.width === 'undefined') {
-                    model.error = "Url and width can't be empty";
+                if (model.url === undefined || model.width === undefined || model.name === undefined) {
+                    if (model.url === undefined) {
+                        model.widgeturl = "name is required";
+                        model.error = true;
+                        return;
+                    }
+                    else {
+                        model.widgeturl = false;
+                    }
+                    if (model.width === undefined) {
+                        model.widgetwidth = "width is required";
+                        model.error = true;
+                        return;
+                    }
+                    else {
+                        model.widgetwidth = false;
+                    }
+                    if (model.name === undefined) {
+                        model.widgetename = "name is required";
+                        model.error = true;
+                        return;
+                    }
+                    else {
+                        model.widgetename = false;
+                    }
                     return;
                 }
+                model.widgetename = false;
+                model.widgetwidth = false;
+                model.widgeturl = false;
             }
             widgetService
                 .updateWidget(model.pageId,model.widgetId,w)
                 .then(function () {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                    $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
         }
 
@@ -87,7 +152,7 @@
                 .deleteWidget(model.pageId,model.widgetId)
                 .then(function (status) {
                     // console.log(status);
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                    $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
         }
     }

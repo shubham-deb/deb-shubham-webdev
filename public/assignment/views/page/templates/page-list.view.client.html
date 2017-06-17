@@ -2,13 +2,13 @@
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href='#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new' class="navbar-link">
+            <a href='#!/website/{{model.websiteId}}/page/new' class="navbar-link">
                 <span class="glyphicon glyphicon-plus">
                 </span>
             </a>
         </div>
         <div class="navbar-text pull-left">
-            <a href="#!/user/{{model.userId}}/website" class="navbar-link">
+            <a href="#!/website" class="navbar-link">
                 <span class="glyphicon glyphicon-arrow-left">
                 </span>
             </a>
@@ -25,10 +25,10 @@
 <div class="container-fluid">
     <ul class="list-group">
         <li ng-repeat="page in model.pages" class="list-group-item borderless">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+            <a href="#!/website/{{model.websiteId}}/page/{{page._id}}/widget">
                 {{page.name}}
             </a>
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
+            <a href="#!/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog">
                 </span>
             </a>
@@ -40,7 +40,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#!/user/{{model.userId}}">
+            <a href="#!/profile">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

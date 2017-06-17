@@ -69,7 +69,7 @@ function uploadImage(req, res) {
             wid.url = '/assignment/uploads/' + filename;
             wid.width = width;
             wid.save();
-            callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
+            var callbackUrl = "/assignment/#!/website/" + websiteId + "/page/" + pageId + "/widget";
             res.redirect(callbackUrl);
         });
 }
