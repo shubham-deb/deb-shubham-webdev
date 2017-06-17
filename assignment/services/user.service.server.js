@@ -47,7 +47,7 @@ var googleConfig = {
 var facebookConfig = {
     clientID     : "665808330270923" ,
     clientSecret : "72e547c881e2bdcbc2de1bee7556a255",
-    callbackURL  : "http://deb-shubham-webdev.herokuapp.com/auth/facebook/callback",
+    callbackURL  : "https://deb-shubham-webdev.herokuapp.com/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'email']
 };
 
