@@ -5,11 +5,13 @@ var passport = require('passport');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+require('dotenv').config();
 
 app.use(cookieParser());
 app.use(session({
     secret: 'this is the secret'
 }));
+console.log(process.env.SESSION_SECRET);
 app.use(passport.initialize());
 app.use(passport.session());
 
