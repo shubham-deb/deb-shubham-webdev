@@ -1,6 +1,6 @@
 var app = require('../../express');
 var bcrypt = require("bcrypt-nodejs");
-//var env = require('./env');
+var env = require('./env');
 var userModel = require('../../public/assignment/models/user/user.model.server');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -45,10 +45,7 @@ var googleConfig = {
     callbackURL  : process.env.GOOGLE_CALLBACK_URL
 };
 var facebookConfig = {
-    // clientID     : "665808330270923" ,
-    // clientSecret : "72e547c881e2bdcbc2de1bee7556a255",
-    // callbackURL  : "https://deb-shubham-webdev.herokuapp.com/auth/facebook/callback",
-    clientID     :  process.env.FACEBOOK_CLIENT_ID,
+    clientID     : process.env.FACEBOOK_CLIENT_ID ,
     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
     callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
     profileFields: ['id', 'displayName', 'email']
