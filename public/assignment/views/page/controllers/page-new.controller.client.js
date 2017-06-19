@@ -24,7 +24,7 @@
             //     model.error = "Name and Description can't be empty";
             //     return;
             // }
-            if(model.pagename === undefined){
+            if(model.name === undefined){
                 model.pagename = "Name is required";
                 model.error = true;
                 return;

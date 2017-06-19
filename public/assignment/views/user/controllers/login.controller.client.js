@@ -42,11 +42,13 @@
                 .login(username,password)
                 .then(function (user) {
                     if(user!="" || user!=null) {
-                        $location.url('/profile');
                         model.error = false;
+                        model.message = false;
+                        $location.url('/profile');
                     }
                 },function (err) {
-                    console.log(err);
+                    model.error = true;
+                    model.message = "Invalid credentials";
                 });
     }
 

@@ -88,24 +88,23 @@
             else if(type === 'TEXT'){
                 if (model.rows === undefined || model.name === undefined) {
                     if (model.name === undefined) {
-                        model.widgetename = "name is required";
+                        model.widgetname = "name is required";
                         model.error = true;
-                        return;
                     }
                     else {
-                        model.widgetename = false;
+                        model.widgetname = false;
                     }
                     if (model.rows === undefined) {
-                        model.rows = "rows is required";
+                        model.widgetrows = "rows is required";
                         model.error = true;
-                        return;
                     }
                     else {
-                        model.rows = false;
+                        model.widgetrows = false;
                     }
                     return;
                 }
-                model.widgetename = false;
+                model.widgetname = false;
+                model.widgetrows = false;
                 model.error = true;
             }
             else if(type === 'IMAGE' || type === 'YOUTUBE') {
@@ -113,7 +112,6 @@
                     if (model.url === undefined) {
                         model.widgeturl = "name is required";
                         model.error = true;
-                        return;
                     }
                     else {
                         model.widgeturl = false;
@@ -121,22 +119,20 @@
                     if (model.width === undefined) {
                         model.widgetwidth = "width is required";
                         model.error = true;
-                        return;
                     }
                     else {
                         model.widgetwidth = false;
                     }
                     if (model.name === undefined) {
-                        model.widgetename = "name is required";
+                        model.widgetname = "name is required";
                         model.error = true;
-                        return;
                     }
                     else {
-                        model.widgetename = false;
+                        model.widgetname = false;
                     }
                     return;
                 }
-                model.widgetename = false;
+                model.widgetname = false;
                 model.widgetwidth = false;
                 model.widgeturl = false;
             }
