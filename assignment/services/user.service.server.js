@@ -45,9 +45,9 @@ var googleConfig = {
     callbackURL  : process.env.GOOGLE_CALLBACK_URL
 };
 var facebookConfig = {
-    clientID     : process.env.FACEBOOK_CLIENT_ID ,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
+    clientID     : process.env.FACEBOOK_CLIENT_ID || "231379807366376",
+    clientSecret : process.env.FACEBOOK_CLIENT_SECRET || "2eaead59eadfc70f247f2a30ccead373",
+    callbackURL  : process.env.FACEBOOK_CALLBACK_URL || "https://deb-shubham-webdev.herokuapp.com/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'email']
 };
 
