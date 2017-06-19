@@ -49,6 +49,7 @@ var facebookConfig = {
     // callbackURL  : "https://deb-shubham-webdev.herokuapp.com/auth/facebook/callback",
     clientID     : "140854839803832",
     clientSecret : "ab16f9b58d926d1b427933cb4711a78d",
+    // callbackURL  : "https://deb-shubham-webdev.herokuapp.com/auth/facebook/callback",
     callbackURL  : "https://deb-shubham-webdev.herokuapp.com/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'email']
 };

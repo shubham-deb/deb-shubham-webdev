@@ -1,384 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>MDB</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../../lib/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../../css/project-style.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../../lib/dist/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
-          rel="stylesheet"
-          type="text/css">
+    <meta charset="UTF-8">
+    <title>Movie Website</title>
+    <link  rel="stylesheet" href= "../../lib/dist/css/bootstrap.css"/>
+    <script src="../../lib/dist/js/jquery.js"></script>
+    <script src="../imdb.js"></script>
 </head>
 
-<body>
+<body style="padding-top: 60px;padding-bottom: 60px;">
 
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-    <div class="container topnav">
-
-        <!-- Brand and toggle get grouped for better mobile display -->
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand topnav" href="#">Our Movie Database</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#about">Movies</a>
-                </li>
-                <li>
-                    <a href="#myLoginModal" data-toggle="modal">
-                        Login
-                    </a>
-                </li>
-                <li>
-                    <a href="#myRegisterModal" data-toggle="modal">
-                        Register
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!--Login Modal -->
-        <div class="modal fade" id="myLoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="vertical-alignment-helper">
-                <div class="modal-dialog vertical-align-center modal-lg">
-                    <div class="modal-content">
-                        <!-- MODAL HEADER -->
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span>
-                                Login
-                            </h4>
-                        </div>
-                        <!-- MODAL CONTENT -->
-                        <div class="container-fluid">
-                                <form class="margin-top" role="form">
-
-                                    <div class="form-group">
-                                        <label for="username"><span class="glyphicon glyphicon-user"></span>
-                                            Username
-                                        </label>
-                                        <input ng-model="username"
-                                               type="text"
-                                               id="username"
-                                               class="form-control"
-                                               placeholder="bob123"
-                                               required/>
-                                    </div>
-
-                                    <div class="form-group margin-top">
-                                        <label class="margin-top" for="password"><span class="glyphicon glyphicon-eye-open"></span>
-                                            Password
-                                        </label>
-                                        <input ng-model="password"
-                                               type="password"
-                                               id="password"
-                                               class="form-control"
-                                               placeholder="qwer1234zxcv"
-                                               required/>
-                                    </div>
-
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="" checked>
-                                            Remember me
-                                        </label>
-                                    </div>
-
-                                    <a type="submit"
-                                       ng-click="model.login(username, password)"
-                                       class="btn btn-primary btn-block margin-top">
-                                        <span class="glyphicon glyphicon-off"></span>
-                                        Login
-                                    </a>
-
-                                    <a class="btn btn-success btn-block"
-                                       href="#!/register">
-                                        <span class="fa fa-plus"></span>
-                                        Register
-                                    </a>
-                                </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="navbar-brand pull-left">
+                Search TMDb
             </div>
         </div>
     </div>
-
-    <!-- Register Modal -->
-    <div class="modal fade" id="myRegisterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="vertical-alignment-helper">
-            <div class="modal-dialog vertical-align-center modal-lg">
-                <div class="modal-content">
-
-                    <!-- MODAL HEADER -->
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span>
-                            Register
-                        </h4>
-                    </div>
-
-                    <!-- MODAL CONTENT -->
-                    <div class="container-fluid">
-                            <form class="margin-top" role="form">
-
-                                <div class="form-group">
-                                    <label for="username1">Username</label>
-                                    <input type="text" id="username1" class="form-control"
-                                           ng-model="register-username"
-                                           placeholder="eg: debshubham"/>
-                                </div>
-
-                                <div class="form-group margin-top">
-                                    <label for="password1">Password</label>
-                                    <input type="password"
-                                           ng-model="register-password"
-                                           id="password1"
-                                           class="form-control"
-                                           placeholder="eg: abc123"/>
-                                </div>
-
-                                <div class="form-group margin-top">
-                                    <label for="password2">Verify Password</label>
-                                    <input type="password"
-                                           ng-model = "register-password2"
-                                           class="form-control"
-                                           id="password2"
-                                           placeholder="type your above password again"/>
-                                </div>
-
-                                <a  ng-click="model.register(username,password,password2)"
-                                    class="btn btn-primary btn-block margin-top">
-                                    Register
-                                </a>
-
-                                <a class="btn btn-danger  btn-block"
-                                       href="#!/login">
-                                    Cancel
-                                </a>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                Close
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
 </nav>
 
+<div class="container-fluid">
 
-<!-- Header -->
-<a name="about"></a>
-<div class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="intro-message">
-                    <!--<h1>Landing Page</h1>-->
-                    <div class="line-1 anim-typewriter">Search for movies</div>
-                    <!--<hr class="intro-divider">-->
-                    <div class="input-group">
-                        <input id="movieTitle" placeholder="eg: Titanic" type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <a id="searchMovie" href="#" class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    <div class="input-group">
+        <input id="movieTitle" type="text" class="form-control">
+        <span class="input-group-btn">
+            <a id="searchMovie" href="#" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
     </div>
-    <!-- /.container -->
 
+    <h2>Results</h2>
+    <table class="table table-striped" id="results">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Plot</th>
+            <th>Poster</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </div>
-<!-- /.intro-header -->
 
-<!-- Page Content -->
-
-<a  name="services"></a>
-<div class="content-section-a">
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-5 col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>
-                <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">
-                    Death to the Stock Photo</a> for providing the photographs that you see in this template.
-                    Visit their website to become a member.
-                </p>
-            </div>
-            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="../img/ipad.png" alt="">
-            </div>
-        </div>
-
-    </div>
-    <!-- /.container -->
-
-</div>
-<!-- /.content-section-a -->
-
-<div class="content-section-b">
-
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">3D Device Mockups<br>by PSDCovers</h2>
-                <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by
-                    <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>!
-                    Visit their website to download some of their awesome, free photoshop actions!
-                </p>
-            </div>
-            <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                <img class="img-responsive" src="../img/dog.png" alt="">
-            </div>
-        </div>
-
-    </div>
-    <!-- /.container -->
-
-</div>
-<!-- /.content-section-b -->
-
-<div class="content-section-a">
-
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-5 col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">Google Web Fonts and<br>Font Awesome Icons</h2>
-                <p class="lead">This template features the 'Lato' font, part of the
-                    <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>,
-                    as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.
-                </p>
-            </div>
-            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="../img/phones.png" alt="">
-            </div>
-        </div>
-
-    </div>
-    <!-- /.container -->
-
-</div>
-<!-- /.content-section-a -->
-
-<a  name="contact"></a>
-<div class="banner">
-
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-6">
-                <h2>Connect to Start Bootstrap:</h2>
-            </div>
-            <div class="col-lg-6">
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg">
-                            <i class="fa fa-twitter fa-fw"></i>
-                            <span class="network-name">Twitter</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg">
-                            <i class="fa fa-github fa-fw"></i>
-                            <span class="network-name">Github</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i>
-                            <span class="network-name">Linkedin</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-    <!-- /.container -->
-
-</div>
-<!-- /.banner -->
-
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="list-inline">
-                    <li>
-                        <a href="#">Home</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#services">Services</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
-                </ul>
-                <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
-            </div>
+<!-- FOOTER -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
         </div>
     </div>
-</footer>
-
-<!-- jQuery -->
-<script src="../../lib/dist/js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="../../lib/dist/js/bootstrap.min.js"></script>
+</nav>
 
 </body>
 

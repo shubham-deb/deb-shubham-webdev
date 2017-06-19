@@ -6,7 +6,6 @@
         var API_KEY = "8b4a101400c25efdf094f6b9b8081675";
         var table = $('#results');
         var tbody = table.find("tbody");
-
         var poster_path = "";
 
         function searchMovie() {
