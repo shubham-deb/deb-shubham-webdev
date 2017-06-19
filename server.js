@@ -8,7 +8,7 @@ var session = require('express-session');
 
 app.use(cookieParser());
 app.use(session({
-    secret: process.env.SESSION_SECRET
+    secret: "my secret"
 }));
 app.use(passport.initialize());
 app.use(passport.session());

@@ -47,9 +47,9 @@ var facebookConfig = {
     // clientID     : "242625612892833",
     // clientSecret : "0c36a8f1fbe8ca589dfc83ca8dfd442e",
     // callbackURL  : "https://deb-shubham-webdev.herokuapp.com/auth/facebook/callback",
-    clientID     : process.env.FACEBOOK_CLIENT_ID,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
+    clientID     : "140854839803832",
+    clientSecret : "ab16f9b58d926d1b427933cb4711a78d",
+    callbackURL  : "https://deb-shubham-webdev.herokuapp.com/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'email']
 };
 
