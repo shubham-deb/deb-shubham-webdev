@@ -1,6 +1,6 @@
 var app = require('../../express');
 var bcrypt = require("bcrypt-nodejs");
-var env = require('./env');
+// var env = require('./env');
 var userModel = require('../../public/assignment/models/user/user.model.server');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -40,7 +40,7 @@ app.get('/google/callback',
     }));
 
 var googleConfig = {
-    clientID     :  process.env.GOOGLE_CLIENT_ID,
+    clientID     : process.env.GOOGLE_CLIENT_ID,
     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
     callbackURL  : process.env.GOOGLE_CALLBACK_URL
 };
