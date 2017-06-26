@@ -24,13 +24,10 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 app.set('view engine', 'ejs');
 
-<<<<<<< HEAD
 // receives either the port that the heroku uses or default port 3000
 var port = process.env.PORT || 3200;
-=======
 app.use(app.express.static(__dirname + '/public'));
 require('./assignment/app');
 // require('./public/mongo/app');
->>>>>>> 1ffa1fc963133047cc9f7efd98fce35bd9cbbf66
 
 app.listen(process.env.PORT || 3000);

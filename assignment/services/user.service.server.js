@@ -54,7 +54,7 @@ var facebookConfig = {
     profileFields: ['id', 'displayName', 'email']
 };
 
-passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+// passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
 function facebookStrategy(token, refreshToken, profile, done) {
