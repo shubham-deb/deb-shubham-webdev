@@ -14,6 +14,6 @@ require ("./test/app.js")(app);
 //require("./todo/app")(app);
 
 // receives either the port that the heroku uses or default port 3000
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3200;
 
 app.listen(port);
