@@ -7,8 +7,8 @@
             </a>
         </div>
         <div class="navbar-text pull-left">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
-                <span class="glyphicon glyphicon-menu-left">
+            <a href="#!/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                <span class="glyphicon glyphicon-arrow-left">
                 </span>
             </a>
         </div>
@@ -23,14 +23,22 @@
 <!-- CONTENT -->
 <div class="container-fluid">
     <form class="pad-left">
-        <label for="name">Name</label>
-        <input type="text" id="name" placeholder="eg: Shubham" class="form-control" ng-model="model.name">
 
-        <label for="text">Text</label>
-        <input type="text" id="text" class="form-control" ng-model="model.text">
+        <p for="name">Name
+        <input type="text" required id="name" placeholder="eg: Shubham" class="form-control" ng-model="model.name">
+            <span style="color: red" ng-show="model.widgetename">Name is required.</span>
+        </p>
 
-        <label for="size">Size</label>
-        <input type="number" id="size" max="6" min="1z" class="form-control" ng-model="model.size">
+        <p for="text">Text
+        <input required type="text" id="text" class="form-control" ng-model="model.text">
+            <span style="color: red" ng-show="model.widgettext">Name is required.</span>
+        </p>
+
+        <p for="size">Size
+        <input required type="number" id="size" max="6" min="0" class="form-control" ng-model="model.size">
+            <span style="color: red" ng-show="model.widgetsize">Size is required.</span>
+        </p>
+
         <a ng-click="model.deleteWidget()" class="form-control btn btn-danger">Delete</a>
     </form>
 </div>

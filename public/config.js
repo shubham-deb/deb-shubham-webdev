@@ -10,7 +10,12 @@
     function Configuration($routeProvider) {
         $routeProvider
             .when('/',{
-                templateUrl : 'home.html'
+                templateUrl : 'index.html'
+            })
+            .when('/login',{
+                templateUrl : 'assignment/views/user/templates/login.view.client.html',
+                controller:'loginController',
+                controllerAs:'model'
             });
     }
 })();

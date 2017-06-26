@@ -1,25 +1,35 @@
 <div class="container-fluid">
         <h1>Login</h1>
 
-        <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
+        <div ng-show="model.error" class="alert alert-danger">ERROR</div>
+        <div ng-show="model.message" class="alert alert-danger">{{model.message}}</div>
         <form>
-                <label for="username">Username</label>
+                <p for="username">Username
                 <input ng-model="username"
                        type="text"
                        id="username"
+                       autocapitalize="none"
+                       autocomplete="off"
                        class="form-control"
                        placeholder="bob123"
                        required/>
+                <span style="color: red" ng-show="model.usernamealert">Username is required.</span>
+                </p>
 
-                <label for="password">Password</label>
+                <p for="password">Password
                 <input ng-model="password"
+                       autocapitalize="none"
+                       autocomplete="off"
                        type="password"
                        id="password"
                        class="form-control"
                        placeholder="qwer1234zxcv"
                        required/>
+                        <span style="color: red" ng-show="model.passwordalert">Password is required.</span>
+                </p>
 
-                <a ng-click="model.login(username, password)"
+                <a type="submit"
+                   ng-click="model.login(username, password)"
                    class="btn btn-primary btn-block">
                         Login
                 </a>
@@ -28,5 +38,16 @@
                    href="#!/register">
                         Register
                 </a>
+
+                <a href="/auth/google" class="btn btn-danger btn-block">
+                        <span class="fa fa-google-plus"></span>
+                        Google
+                </a>
+
+                <a href="/auth/facebook" class="btn btn-primary btn-block">
+                        <span class="fa fa-facebook"></span>
+                        Facebook
+                </a>
+
         </form>
 </div>

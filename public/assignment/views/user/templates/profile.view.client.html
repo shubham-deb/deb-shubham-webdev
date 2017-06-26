@@ -17,8 +17,28 @@
 
 <!--BODY-->
 <div class="container-fluid">
-    <!--<div class="alert alert-info">{{model.users}}</div>-->
+    <script>
+        $( function() {
+            $( "#dialog" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
 
+            $( "#opener" ).on( "click", function() {
+                $( "#dialog" ).dialog( "open" );
+            });
+        } );
+    </script>
+    <!--<div class="alert alert-info">{{model.users}}</div>-->
+    <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
+    <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
     <form>
         <div class="form-group">
             <label for="username">Username</label>
@@ -39,24 +59,24 @@
     </form>
 
     <a class="btn btn-primary btn-block"
-       href="#!/user/{{model.userId}}/website">
+       href="#!/website">
         Websites
     </a>
     <a class="btn btn-danger btn-block"
-       href="#!/login">
+           ng-click="model.logout()">
         Logout
     </a>
-    <a class="btn btn-warning btn-block"
+    <button id="opener" class="btn btn-warning btn-block"
        ng-click="model.deleteProfile()">
         Delete My Profile
-    </a>
+    </button>
 </div>
 
 <!--FOOTER-->
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text move-right">
-            <a href="#!/profile">
+            <a href="#!/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

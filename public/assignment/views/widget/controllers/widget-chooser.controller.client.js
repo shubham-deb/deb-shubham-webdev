@@ -3,19 +3,24 @@
         .module('WebAppMaker')
         .controller('widgetChooserController',widgetChooserController);
 
-    function widgetChooserController($location,$routeParams,widgetService) {
+    function widgetChooserController(currentUser,$location,$routeParams,widgetService) {
         var model = this;
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
         model.createWidget = createWidget;
 
         function createWidget(type) {
             var widget= {
-                widgetType : type
+                type:type
             };
-            var createdWidget = widgetService.createWidget(model.pageId,widget);
-            $location.url('/user/'+model.userId+ '/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+createdWidget._id);
+            widgetService
+                .createWidget(model.pageId,widget)
+                .then(function (widget) {
+                    $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+widget._id);
+                },function (err) {
+                    console.log(err);
+                });
         }
 
     }

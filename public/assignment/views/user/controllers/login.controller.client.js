@@ -13,15 +13,44 @@
 
         model.login = login;
 
-        function login(username,password) {
-            var found = userService.findUserByCredentials(username,password);
 
-            if(found!=null) {
-                $location.url('/user/'+user._id);
-                // model.message = "Welcome " + username;
+        function login(username,password) {
+            // var found = userService.findUserByCredentials(username,password);
+
+            if(username === undefined || password === undefined) {
+                if (username === undefined) {
+                    model.usernamealert = "Username is required";
+                    model.error = true;
+                }
+                else{
+                    model.usernamealert = false;
+                }
+                if (password === undefined) {
+                    model.passwordalert = "Password is required";
+                    model.error = true;
+                }
+                else{
+                    model.passwordalert = false;
+                }
+                return;
             }
-            else
-                model.message = "Sorry, username and password not found";
-        }
+
+            model.usernamealert = false;
+            model.passwordalert = false;
+
+            userService
+                .login(username,password)
+                .then(function (user) {
+                    if(user!="" || user!=null) {
+                        model.error = false;
+                        model.message = false;
+                        $location.url('/profile');
+                    }
+                },function (err) {
+                    model.error = true;
+                    model.message = "Invalid credentials";
+                });
+    }
+
     }
 })();

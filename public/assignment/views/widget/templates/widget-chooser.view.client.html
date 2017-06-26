@@ -2,8 +2,8 @@
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
-                <span class="glyphicon glyphicon-menu-left">
+            <a href="#!/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                <span class="glyphicon glyphicon-arrow-left">
                 </span>
             </a>
         </div>
@@ -36,6 +36,11 @@
         <li class="list-group-item">
             <a class="navbar-link" ng-click="model.createWidget('YOUTUBE')">
                 Youtube
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a class="navbar-link" ng-click="model.createWidget('TEXT')">
+                Text
             </a>
         </li>
     </ul>

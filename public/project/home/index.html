@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Website</title>
+    <link  rel="stylesheet" href= "../../lib/dist/css/bootstrap.css"/>
+    <script src="../../lib/dist/js/jquery.js"></script>
+    <script src="../imdb.js"></script>
+</head>
+
+<body style="padding-top: 60px;padding-bottom: 60px;">
+
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand pull-left">
+                Search TMDb
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="input-group">
+        <input id="movieTitle" type="text" class="form-control">
+        <span class="input-group-btn">
+            <a id="searchMovie" href="#" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+    </div>
+
+    <h2>Results</h2>
+    <table class="table table-striped" id="results">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Plot</th>
+            <th>Poster</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<!-- FOOTER -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+</body>
+
+</html>

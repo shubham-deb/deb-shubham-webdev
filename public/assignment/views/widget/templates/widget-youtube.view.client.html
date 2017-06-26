@@ -1,14 +1,14 @@
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a ng-click="model.updateWidget(YOUTUBE)" class="navbar-link">
+            <a ng-click="model.updateWidget('YOUTUBE')" class="navbar-link">
                 <span class="glyphicon glyphicon-ok">
                 </span>
             </a>
         </div>
         <div class="navbar-text pull-left">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
-                <span class="glyphicon glyphicon-menu-left">
+            <a href="#!/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                <span class="glyphicon glyphicon-arrow-left">
                 </span>
             </a>
         </div>
@@ -22,18 +22,26 @@
 
 <!-- CONTENT -->
 <div class="container-fluid">
+
     <form class="pad-left">
-        <label for="name">Name</label>
-        <input type="text" id="name" placeholder="eg: Shubham" class="form-control" ng-model="model.name">
+        <p for="name">Name
+        <input type="text" id="name" placeholder="eg: Shubham" class="form-control" ng-model="model.name" required>
+            <span style="color: red" ng-show="model.widgetname">Name is required.</span>
+        </p>
 
-        <label for="text">Text</label>
+        <p for="text">Text
         <input type="text" id="text" class="form-control" placeholder="enter info here" ng-model="model.text">
+        </p>
 
-        <label for="url">URL</label>
-        <input type="url" id="url" class="form-control" ng-model="model.url">
+        <p for="url">URL
+        <input type="url" id="url" class="form-control" ng-model="model.url" required>
+            <span style="color: red" ng-show="model.widgeturl">URL is required.</span>
+        </p>
 
-        <label for="width">Width</label>
-        <input id="width" type="text" class="form-control" ng-model="model.width" />
+        <p for="width">Width
+        <input id="width" type="text" class="form-control" ng-model="model.width" required />
+            <span style="color: red" ng-show="model.widgetwidth">Width is required.</span>
+        </p>
 
         <a ng-click="model.deleteWidget()" class="form-control btn btn-danger">Delete</a>
     </form>

@@ -3,28 +3,45 @@
         .module('WebAppMaker')
         .controller('pageNewController',pageNewController);
 
-    function pageNewController($location,$routeParams,pageService) {
+    function pageNewController(currentUser,$location,$routeParams,pageService) {
         var model = this;
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
         model.websiteId = $routeParams.websiteId;
         model.createPage = createPage;
 
         function init() {
-            model.pages = pageService.findPageByWebsiteId(model.websiteId);
+            pageService
+                .findPageByWebsiteId(model.websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                });
         }
         init();
 
-        function createPage(page) {
-            if(typeof page === 'undefined'){
-                model.error = "Cannot create an empty page";
+        function createPage() {
+            // if(typeof model.name === 'undefined' || typeof model.description === 'undefined'
+            //     || model.name === "" || model.description === ""){
+            //     model.error = "Name and Description can't be empty";
+            //     return;
+            // }
+            if(model.name === undefined){
+                model.pagename = "Name is required";
+                model.error = true;
                 return;
             }
-            if(typeof page.name === 'undefined' || typeof page.description === 'undefined'){
-                model.error = "Name and Description can't be empty";
-                return;
-            }
-            pageService.createPage(model.websiteId,page);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+            model.pagename = false;
+            model.error = false;
+
+            var page  = {
+                websiteId: model.websiteId,
+                name: model.name,
+                description: model.description
+            };
+            pageService
+                .createPage(model.websiteId,page)
+                .then(function () {
+                    $location.url('/website/'+model.websiteId+'/page');
+                });
         }
     }
 })();
