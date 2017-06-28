@@ -30,4 +30,4 @@ app.use(app.express.static(__dirname + '/public'));
 require('./assignment/app');
 // require('./public/mongo/app');
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 2200);
