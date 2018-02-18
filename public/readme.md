@@ -1,17 +1,18 @@
 # File Structure
 * public/config.js
   *  configures the angular application routing and used the routing provider to map the routerLink to the components.
-* public/services ( Each service provides CRUD operations to manipulate the corresponding entity: create, read, update, and delete.)
-  * movie.service.client.js
-    * This angular service will send asynchronous HTTP requests using Angular Http service to the TMDB Web Service to fetch movies and           related information.
-  * news.service.client.js
-    * This angular service will send asynchronous HTTP requests using Angular Http service to the theGuardian Web Service to fetch news         related to the movies.
+* assignment/services ( Each service provides CRUD operations to manipulate the corresponding entity: create, read, update, and delete.)
+  * page.service.client.js
+    * This angular service will send asynchronous HTTP requests using Angular Http service to fetch webpages created by the user and other       related information.
+  * website.service.client.js
+    * This angular service will send asynchronous HTTP requests using Angular Http service to fetch websites created by the user.
   * user.service.client.js
     * This angular service will send asynchronous HTTP requests to fetch users from the user model.
+  * widget.service.client.js
+    * This angular service will send asynchronous HTTP requests using Angular Http service to fetch widgets created by the user.
 * server.js
   * imports libraries used for session management, JSON parsing etc and hosts the website.
 * model
-  * review.model.server.js/ user.model.server.js
     * contains the schema and the functions used to do CRUD operations on the data.
 * public/views
   * contains each component which is treated as a mini Angular app
